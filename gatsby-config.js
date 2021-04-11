@@ -32,5 +32,6 @@ module.exports = {
     `gatsby-plugin-resolve-src`,
     `gatsby-plugin-typescript`,
     `gatsby-plugin-netlify-cms`,
+    `gatsby-plugin-material-ui`,
   ],
 }
