@@ -1,0 +1,43 @@
+backend:
+  name: git-gateway
+  repo: yosyos36/yoshiki-web
+  branch: main
+
+media_folder: static/assets
+public_folder: /assets
+
+collections:
+  - name: blog
+    label: Blog
+    folder: src/pages/blog/contents
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { name: path, label: Path }
+      - { name: date, label: Date, widget: datetime }
+      - { name: title, label: Title }
+      - { name: body, label: Body, widget: markdown }
+      - { name: "image", label: "image", widget: image }
+      - { name: "tags", label: "tags", widget: "list" }
+#   - name: note
+#     label: Note
+#     folder: src/pages/note/contents
+#     fields:
+#       - { name: path, label: Path }
+#       - { name: date, label: Date, widget: datetime }
+#       - { name: title, label: Title }
+#       - { name: body, label: Body, widget: markdown }
+#       - { name: "image", label: "image", widget: image }
+#       - { name: "tags", label: "tags", widget: "list" }
+#
+#   - name: app
+#     label: App
+#     folder: src/pages/app/contents
+#     fields:
+#       - { name: path, label: Path }
+#       - { name: date, label: Date, widget: datetime }
+#       - { name: title, label: Title }
+#       - { name: body, label: Body, widget: markdown }
+#       - { name: "image", label: "image", widget: image }
+#       - { name: "tags", label: "tags", widget: "list" }
+#
