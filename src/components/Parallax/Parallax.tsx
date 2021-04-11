@@ -1,11 +1,6 @@
 import React, { FC } from "react"
-// nodejs library that concatenates classes
-import classNames from "classnames"
-// nodejs library to set properties for components
-import PropTypes from "prop-types"
-// @material-ui/core components
 
-// core components
+import classNames from "classnames"
 import parallaxStyle from "components/Parallax/parallaxStyle"
 
 type Props = {
@@ -17,7 +12,7 @@ type Props = {
 
 const Parallax: FC<Props> = props => {
   let windowScrollTop
-  if (window.innerWidth >= 768) {
+  if (typeof window !== `undefined` && window.innerWidth >= 768) {
     windowScrollTop = window.pageYOffset / 3
   } else {
     windowScrollTop = 0
@@ -26,17 +21,18 @@ const Parallax: FC<Props> = props => {
     "translate3d(0," + windowScrollTop + "px,0)"
   )
   React.useEffect(() => {
-    if (window.innerWidth >= 768) {
+    if (typeof window !== `undefined` && window.innerWidth >= 768) {
       window.addEventListener("scroll", resetTransform)
     }
     return function cleanup() {
-      if (window.innerWidth >= 768) {
+      if (typeof window !== `undefined` && window.innerWidth >= 768) {
         window.removeEventListener("scroll", resetTransform)
       }
     }
   })
   const resetTransform = () => {
-    var windowScrollTop = window.pageYOffset / 3
+    var windowScrollTop =
+      typeof window !== `undefined` ? window.pageYOffset / 3 : 0
     setTransform("translate3d(0," + windowScrollTop + "px,0)")
   }
   const { filter, className, children, image, small } = props

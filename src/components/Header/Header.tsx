@@ -36,11 +36,13 @@ const Header: FC<Props> = props => {
 
   React.useEffect(() => {
     if (props.changeColorOnScroll) {
-      window.addEventListener("scroll", headerColorChange)
+      typeof window !== `undefined` &&
+        window.addEventListener("scroll", headerColorChange)
     }
     return function cleanup() {
       if (props.changeColorOnScroll) {
-        window.removeEventListener("scroll", headerColorChange)
+        typeof window !== `undefined` &&
+          window.removeEventListener("scroll", headerColorChange)
       }
     }
   })
@@ -51,7 +53,8 @@ const Header: FC<Props> = props => {
 
   const headerColorChange = () => {
     const { changeColorOnScroll } = props
-    const windowsScrollTop = window.pageYOffset
+    const windowsScrollTop =
+      typeof window !== `undefined` ? window.pageYOffset : 0
     if (windowsScrollTop > changeColorOnScroll.height) {
       document.body
         .getElementsByTagName("header")[0]

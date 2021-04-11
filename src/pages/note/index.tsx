@@ -4,10 +4,8 @@ import Layout from "components/Layout/Layout"
 
 import pageStyles from "assets/jss/material-kit-react/pageStyles"
 
-const NotePage: FC<{}> = props => {
+const NotePage: FC<{}> = () => {
   const classes = pageStyles()
-  const { ...rest } = props
-  document.title = "Note - Yoshiki Web"
   return (
     <Layout>
       <div className={classes.pageTitleContainer}>

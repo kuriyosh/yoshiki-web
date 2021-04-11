@@ -12,7 +12,6 @@ import profileBackGround from "assets/img/profile-bg.jpg"
 
 const Layout: FC<{}> = props => {
   const { children, ...rest } = props
-  document.title = "Yoshiki Web"
   return (
     <div>
       <Header

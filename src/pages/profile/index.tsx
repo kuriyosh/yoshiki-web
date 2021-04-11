@@ -11,18 +11,12 @@ import GridItem from "components/Grid/GridItem"
 import TableCell from "components/Table/TableCell"
 
 import profile from "assets/img/prof.jpg"
-import profilePageStyle from "pages/profile/profilePage"
+import profilePageStyle from "assets/jss/pages/profilePage"
 
 import Layout from "components/Layout/Layout"
 
-type Props = {
-  children: React.ReactNode
-}
-
-const IndexPage: FC<Props> = props => {
+const IndexPage: FC<{}> = () => {
   const classes = profilePageStyle()
-  const { ...rest } = props
-  document.title = "Yoshiki Web"
   return (
     <Layout>
       <GridContainer justify="center">

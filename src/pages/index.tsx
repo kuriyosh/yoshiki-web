@@ -1,7 +1,7 @@
 import React, { FC } from "react"
 import MainContainer from "components/Container/MainContainer"
 
-import profilePageStyle from "pages/profile/profilePage"
+import profilePageStyle from "assets/jss/pages/profilePage"
 type Props = {
   children: React.ReactNode
 }

@@ -6,7 +6,6 @@ import pageStyles from "assets/jss/material-kit-react/pageStyles"
 
 const NotePage: FC<{}> = () => {
   const classes = pageStyles()
-  document.title = "App - Yoshiki Web"
   return (
     <Layout>
       <div className={classes.pageTitleContainer}>
