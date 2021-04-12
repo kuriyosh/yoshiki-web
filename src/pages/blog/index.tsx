@@ -3,9 +3,12 @@ import React, { FC } from "react"
 import Layout from "components/Layout/Layout"
 
 import pageStyles from "assets/jss/material-kit-react/pageStyles"
+import { graphql, PageProps } from "gatsby"
 
-const BlogPage: FC<{}> = () => {
+const BlogPage: FC<PageProps<GatsbyTypes.BlogIndexQuery>> = ({ data }) => {
   const classes = pageStyles()
+  console.log(data)
+
   return (
     <Layout>
       <div className={classes.pageTitleContainer}>
@@ -21,3 +24,23 @@ const BlogPage: FC<{}> = () => {
 }
 
 export default BlogPage
+
+export const query = graphql`
+  query BlogIndex {
+    allMarkdownRemark {
+      edges {
+        node {
+          id
+          frontmatter {
+            date
+            image
+            path
+            tags
+            title
+          }
+          excerpt
+        }
+      }
+    }
+  }
+`
