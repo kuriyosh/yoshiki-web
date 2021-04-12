@@ -24,7 +24,7 @@ const Footer: FC<Props> = props => {
           </a>
         </div>
         <div className={classes.right}>
-          &copy; {1900 + new Date().getFullYear()} , Yoshiki Kurihara
+          &copy; {new Date().getFullYear()} , Yoshiki Kurihara
         </div>
       </div>
     </footer>
