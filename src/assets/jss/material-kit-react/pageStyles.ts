@@ -3,18 +3,17 @@ import { container, title } from "assets/jss/material-kit-react"
 import imagesStyle from "assets/jss/material-kit-react/imagesStyles"
 import { makeStyles, createStyles } from "@material-ui/core/styles"
 
+import { cardTitle } from "assets/jss/material-kit-react"
+
 const pageStyles = makeStyles(
   createStyles({
     container,
+    cardTitle,
     pageTitleContainer: {
       textAlign: "center",
-      color: "#FFFFFF",
       marginLeft: "auto",
       marginRight: "auto",
       zIndex: 2,
-    },
-    pageTitle: {
-      color: "#FFFFFF",
     },
     description: {
       margin: "1.071rem auto 0",

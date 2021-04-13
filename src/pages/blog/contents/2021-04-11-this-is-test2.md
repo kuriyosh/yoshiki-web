@@ -1,7 +1,7 @@
 ---
 path: test
 date: 2021-04-11T22:29:45.969Z
-title: This is test2
+title: This is test
 image: /assets/cat.jpeg
 tags:
   - test

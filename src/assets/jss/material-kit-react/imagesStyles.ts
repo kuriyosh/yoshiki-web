@@ -20,7 +20,7 @@ const imagesStyles: StyleRules = {
     marginBottom: "2.142rem",
   },
   imgCardTop: {
-    width: "100%",
+    height: "10vh",
     borderTopLeftRadius: "calc(.25rem - 1px)",
     borderTopRightRadius: "calc(.25rem - 1px)",
   },

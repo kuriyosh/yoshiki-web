@@ -31,7 +31,7 @@ type Props = {
   block?: boolean
   link?: boolean
   justIcon?: boolean
-  className: string
+  className?: string
 }
 
 /* TODO: Ref props 消したけどどんな影響があるんだろうか */
@@ -63,7 +63,7 @@ const RegularButton: FC<Props> = props => {
     [classes.block]: block,
     [classes.link]: link,
     [classes.justIcon]: justIcon,
-    [className]: className,
+    ...(className && { [className]: className }),
     ...(size && { [classes[size]]: size }),
   })
 
