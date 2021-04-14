@@ -16,7 +16,7 @@ collections:
       - { name: title, label: Title }
       - { name: date, label: Date, widget: datetime }
       - {
-          name: tamplate,
+          name: template,
           label: Template,
           widget: "select",
           options: ["blog", "note", "app"],
@@ -31,14 +31,16 @@ collections:
           options: ["React", "Gatsby", "Windows"],
         }
       - { name: body, label: Body, widget: markdown }
+
   - name: note
     label: Note
     folder: src/pages/note/contents
+    create: true
     fields:
       - { name: title, label: Title }
       - { name: update_date, label: UpdateDate, widget: datetime }
       - {
-          name: tamplate,
+          name: template,
           label: Template,
           widget: "select",
           options: ["blog", "note", "app"],
@@ -50,6 +52,7 @@ collections:
   - name: app
     label: App
     folder: src/pages/app/contents
+    create: true
     fields:
       - { name: update_date, label: Date, widget: datetime }
       - { name: title, label: Title }
