@@ -3,7 +3,7 @@ import React, { FC } from "react"
 import Layout from "components/Layout/Layout"
 
 import pageStyles from "assets/jss/material-kit-react/pageStyles"
-import { graphql, PageProps } from "gatsby"
+import { Link, graphql, PageProps } from "gatsby"
 
 import GridContainer from "components/Grid/GridContainer"
 import GridItem from "components/Grid/GridItem"
@@ -42,7 +42,9 @@ const BlogPage: FC<PageProps<GatsbyTypes.BlogIndexQuery>> = ({ data }) => {
                     {post.frontmatter && post.frontmatter.title}
                   </h3>
                   <p>{post.excerpt}</p>
-                  <Button color="primary">READ</Button>
+                  <Button color="primary">
+                    <Link to={post.fields.slug}>READ</Link>
+                  </Button>
                 </CardBody>
                 <CardFooter>
                   {post.frontmatter && post.frontmatter.date}
@@ -71,6 +73,9 @@ export const query = graphql`
             title
           }
           excerpt
+          fields {
+            slug
+          }
         }
       }
     }
