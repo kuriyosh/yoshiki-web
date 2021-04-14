@@ -31,22 +31,27 @@ collections:
           options: ["React", "Gatsby", "Windows"],
         }
       - { name: body, label: Body, widget: markdown }
-#  - name: note
-#    label: Note
-#    folder: src/pages/note/contents
-#    fields:
-#      - { name: title, label: Title }
-#      - { name: update_date, label: UpdateDate, widget: datetime }
-#      - { name: body, label: Body, widget: markdown }
-#      - { name: "image", label: "image", widget: image }
-#   - name: app
-#     label: App
-#     folder: src/pages/app/contents
-#     fields:
-#       - { name: path, label: Path }
-#       - { name: date, label: Date, widget: datetime }
-#       - { name: title, label: Title }
-#       - { name: body, label: Body, widget: markdown }
-#       - { name: "image", label: "image", widget: image }
-#       - { name: "tags", label: "tags", widget: "list" }
-#
+  - name: note
+    label: Note
+    folder: src/pages/note/contents
+    fields:
+      - { name: title, label: Title }
+      - { name: update_date, label: UpdateDate, widget: datetime }
+      - {
+          name: tamplate,
+          label: Template,
+          widget: "select",
+          options: ["blog", "note", "app"],
+          default: "blog",
+        }
+      - { name: "image", label: "image", widget: image }
+      - { name: body, label: Body, widget: markdown }
+
+  - name: app
+    label: App
+    folder: src/pages/app/contents
+    fields:
+      - { name: update_date, label: Date, widget: datetime }
+      - { name: title, label: Title }
+      - { name: body, label: Body, widget: markdown }
+      - { name: "image", label: "image", widget: image }

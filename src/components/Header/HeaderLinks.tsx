@@ -30,7 +30,7 @@ const HeaderLinks: FC<{}> = props => {
       <ListItem className={classes.listItem}>
         <Link to="/note" className={classes.link}>
           <Button color="transparent" className={classes.navLink}>
-            <MenuBook className={classes.icons} /> Learn
+            <MenuBook className={classes.icons} /> Note
           </Button>
         </Link>
       </ListItem>

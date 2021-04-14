@@ -1,10 +1,8 @@
 ---
-title: Test Blog1
-date: 2021-04-11T22:29:45.969Z
-template: blog
+title: Test Note
+update_date: 2021-04-11T22:29:45.969Z
+template: note
 image: /assets/cat.jpeg
-tags:
-  - React
 ---
 This is test blog1
 

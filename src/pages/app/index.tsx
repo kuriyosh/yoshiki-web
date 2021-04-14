@@ -3,21 +3,75 @@ import React, { FC } from "react"
 import Layout from "components/Layout/Layout"
 
 import pageStyles from "assets/jss/material-kit-react/pageStyles"
+import { Link, graphql, PageProps } from "gatsby"
 
-const NotePage: FC<{}> = () => {
+import GridContainer from "components/Grid/GridContainer"
+import GridItem from "components/Grid/GridItem"
+import Card from "components/Card/Card"
+import CardBody from "components/Card/CardBody"
+import CardFooter from "components/Card/CardFooter"
+import Button from "components/CustomButtons/Button"
+
+const AppPage: FC<PageProps<GatsbyTypes.AppIndexQuery>> = ({ data }) => {
+  const { edges: posts } = data.allMarkdownRemark
   const classes = pageStyles()
+  console.log(data)
+
   return (
     <Layout>
-      <div className={classes.pageTitleContainer}>
-        <h1 className={classes.pageTitle}>Note</h1>
-      </div>
-      <div className={classes.main + " " + classes.mainRaised}>
-        <div className={classes.container}>
-          <h1>Comming Soon...</h1>
-        </div>
-      </div>
+      <GridContainer justify="center">
+        <GridItem xs={12} sm={12} md={12}>
+          <h1 className={classes.title}>App</h1>
+        </GridItem>
+
+        {posts &&
+          posts.map(({ node: post }) => (
+            <GridItem xs={12} sm={6} md={4}>
+              <Card>
+                {post.frontmatter?.image != undefined && (
+                  <img
+                    className={classes.imgCardTop}
+                    src={post.frontmatter.image}
+                    alt="Card-img-cap"
+                  />
+                )}
+                <CardBody>
+                  <h3 className={classes.cardTitle}>
+                    {post.frontmatter && post.frontmatter.title}
+                  </h3>
+                  <p>{post.excerpt}</p>
+                </CardBody>
+                <CardFooter>
+                  {post.frontmatter && post.frontmatter.date}
+                </CardFooter>
+              </Card>
+            </GridItem>
+          ))}
+      </GridContainer>
     </Layout>
   )
 }
 
-export default NotePage
+export default AppPage
+
+export const query = graphql`
+  query AppIndex {
+    allMarkdownRemark(filter: { frontmatter: { template: { eq: "app" } } }) {
+      edges {
+        node {
+          id
+          frontmatter {
+            date
+            image
+            tags
+            title
+          }
+          excerpt
+          fields {
+            slug
+          }
+        }
+      }
+    }
+  }
+`

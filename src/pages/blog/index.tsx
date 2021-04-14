@@ -12,8 +12,6 @@ import CardBody from "components/Card/CardBody"
 import CardFooter from "components/Card/CardFooter"
 import Button from "components/CustomButtons/Button"
 
-import profile from "assets/img/prof.jpg"
-
 const BlogPage: FC<PageProps<GatsbyTypes.BlogIndexQuery>> = ({ data }) => {
   const { edges: posts } = data.allMarkdownRemark
   const classes = pageStyles()
@@ -21,14 +19,14 @@ const BlogPage: FC<PageProps<GatsbyTypes.BlogIndexQuery>> = ({ data }) => {
 
   return (
     <Layout>
-      <GridContainer>
+      <GridContainer justify="center">
         <GridItem xs={12} sm={12} md={12}>
           <h1 className={classes.title}>Blog</h1>
         </GridItem>
 
         {posts &&
           posts.map(({ node: post }) => (
-            <GridItem xs={6} sm={6} md={6}>
+            <GridItem xs={12} sm={6} md={4}>
               <Card>
                 {post.frontmatter?.image != undefined && (
                   <img
@@ -61,14 +59,13 @@ export default BlogPage
 
 export const query = graphql`
   query BlogIndex {
-    allMarkdownRemark {
+    allMarkdownRemark(filter: { frontmatter: { template: { eq: "blog" } } }) {
       edges {
         node {
           id
           frontmatter {
             date
             image
-            path
             tags
             title
           }
