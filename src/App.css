@@ -4,7 +4,7 @@ html * {
   box-sizing: border-box;
 }
 body {
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 body,
 h1,
@@ -63,7 +63,7 @@ h6 {
   font-weight: 500;
 }
 p {
-  font-size: 14px;
+  font-size: 15px;
   margin: 0 0 10px;
 }
 html {
@@ -76,7 +76,7 @@ html {
 }
 body {
   background-color: #e5e5e5;
-  color: #3c4858;
+  color: #272f39;
   margin: 0;
   font-size: 1rem;
   text-align: left;
