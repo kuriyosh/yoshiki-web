@@ -19,11 +19,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Yoshiki Web`,
+        short_name: `yoshiki-web`,
         start_url: `/`,
-        background_color: `#7EDDE4`,
-        theme_color: `#7EDDE4`,
+        background_color: `#496873`,
+        theme_color: `#496873`,
         display: `minimal-ui`,
         icon: `src/images/favicon.png`,
       },
