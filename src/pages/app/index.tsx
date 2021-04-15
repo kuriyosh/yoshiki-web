@@ -3,14 +3,13 @@ import React, { FC } from "react"
 import Layout from "components/Layout/Layout"
 
 import pageStyles from "assets/jss/material-kit-react/pageStyles"
-import { Link, graphql, PageProps } from "gatsby"
+import { graphql, PageProps } from "gatsby"
 
 import GridContainer from "components/Grid/GridContainer"
 import GridItem from "components/Grid/GridItem"
 import Card from "components/Card/Card"
 import CardBody from "components/Card/CardBody"
 import CardFooter from "components/Card/CardFooter"
-import Button from "components/CustomButtons/Button"
 
 const AppPage: FC<PageProps<GatsbyTypes.AppIndexQuery>> = ({ data }) => {
   const { edges: posts } = data.allMarkdownRemark
@@ -26,7 +25,7 @@ const AppPage: FC<PageProps<GatsbyTypes.AppIndexQuery>> = ({ data }) => {
 
         {posts &&
           posts.map(({ node: post }) => (
-            <GridItem xs={12} sm={6} md={4}>
+            <GridItem xs={12} sm={6} md={6}>
               <Card>
                 {post.frontmatter?.image != undefined && (
                   <img
