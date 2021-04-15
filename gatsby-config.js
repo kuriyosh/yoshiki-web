@@ -33,7 +33,22 @@ module.exports = {
     `gatsby-plugin-typescript`,
     `gatsby-plugin-netlify-cms`,
     `gatsby-plugin-material-ui`,
-    `gatsby-transformer-remark`,
     `gatsby-plugin-typegen`,
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              classPrefix: "language-",
+              aliases: {},
+              showLineNumbers: true,
+              noInlineHighlight: false,
+            },
+          },
+        ],
+      },
+    },
   ],
 }

@@ -7,5 +7,8 @@ image: /assets/cat.jpeg
 This is test blog1
 
 ```javascript
-console.log("test is test")
+function test() {
+    let message = "this is test code"
+    console.log(message)
+}
 ```
