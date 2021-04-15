@@ -125,6 +125,34 @@ form {
   margin-bottom: 1.125rem;
 }
 
+/* for Prism.js code line number */
 .gatsby-highlight pre[class*="language-"].line-numbers .line-numbers-rows {
   padding-top: 1em;
+}
+
+/* for Markdown */
+.markdown-body h1 {
+  font-size: 2.25rem;
+  line-height: 1.5em;
+}
+
+.markdown-body h2 {
+  font-size: 1.5625rem;
+  line-height: 1.4em;
+}
+
+.markdown-body h3 {
+  font-size: 1.125rem;
+  line-height: 1.5em;
+}
+
+.markdown-body h4 {
+  font-size: 1.0625rem;
+  line-height: 1.55em;
+}
+
+.markdown-body h5 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 500;
 }
