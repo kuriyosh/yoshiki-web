@@ -40,9 +40,9 @@ const BlogPage: FC<PageProps<GatsbyTypes.BlogIndexQuery>> = ({ data }) => {
                     {post.frontmatter && post.frontmatter.title}
                   </h3>
                   <p>{post.excerpt}</p>
-                  <Button color="primary">
-                    <Link to={post.fields.slug}>READ</Link>
-                  </Button>
+                  <Link to={post.fields.slug}>
+                    <Button color="primary">READ</Button>
+                  </Link>
                 </CardBody>
                 <CardFooter>
                   {post.frontmatter && post.frontmatter.date}
