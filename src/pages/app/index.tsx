@@ -38,7 +38,7 @@ const AppPage: FC<PageProps<GatsbyTypes.AppIndexQuery>> = ({ data }) => {
                   <h3 className={classes.cardTitle}>
                     {post.frontmatter && post.frontmatter.title}
                   </h3>
-                  <p>{post.excerpt}</p>
+                  <div dangerouslySetInnerHTML={{ __html: post.html }} />
                 </CardBody>
                 <CardFooter>
                   {post.frontmatter && post.frontmatter.date}
@@ -59,10 +59,10 @@ export const query = graphql`
       edges {
         node {
           id
+          html
           frontmatter {
             date
             image
-            tags
             title
           }
           excerpt

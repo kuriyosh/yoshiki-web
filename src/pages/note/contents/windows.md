@@ -1,8 +1,8 @@
 ---
-title: Test Note
+title: Windows
 update_date: 2021-04-11T22:29:45.969Z
 template: note
-image: /assets/cat.jpeg
+image: /assets/windows.jpg
 ---
 This is test blog1
 

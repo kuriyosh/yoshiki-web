@@ -25,7 +25,7 @@ const NotePage: FC<PageProps<GatsbyTypes.NoteIndexQuery>> = ({ data }) => {
 
         {posts &&
           posts.map(({ node: post }) => (
-            <GridItem xs={12} sm={6} md={4}>
+            <GridItem xs={12} sm={6} md={6}>
               <Card>
                 {post.frontmatter?.image != undefined && (
                   <img
@@ -38,7 +38,6 @@ const NotePage: FC<PageProps<GatsbyTypes.NoteIndexQuery>> = ({ data }) => {
                   <h3 className={classes.cardTitle}>
                     {post.frontmatter && post.frontmatter.title}
                   </h3>
-                  <p>{post.excerpt}</p>
                   <Link to={post.fields.slug}>
                     <Button color="primary">READ</Button>
                   </Link>

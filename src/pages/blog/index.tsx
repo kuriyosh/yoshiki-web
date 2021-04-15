@@ -26,7 +26,7 @@ const BlogPage: FC<PageProps<GatsbyTypes.BlogIndexQuery>> = ({ data }) => {
 
         {posts &&
           posts.map(({ node: post }) => (
-            <GridItem xs={12} sm={6} md={4}>
+            <GridItem xs={12} sm={6} md={6}>
               <Card>
                 {post.frontmatter?.image != undefined && (
                   <img
