@@ -10,6 +10,7 @@ import Hidden from "@material-ui/core/Hidden"
 import Drawer from "@material-ui/core/Drawer"
 
 import Menu from "@material-ui/icons/Menu"
+import { Link } from "gatsby"
 
 import headerStyle from "components/Header/headerStyle"
 
@@ -78,7 +79,11 @@ const Header: FC<Props> = props => {
     [classes["transparent"]]: "transparent",
     [classes.fixed]: true,
   })
-  const brandComponent = <Button className={classes.title}>Yoshiki Web</Button>
+  const brandComponent = (
+    <Link to="/">
+      <Button className={classes.title}>Yoshiki Web</Button>
+    </Link>
+  )
   return (
     <AppBar className={appBarClasses}>
       <Toolbar className={classes.container}>

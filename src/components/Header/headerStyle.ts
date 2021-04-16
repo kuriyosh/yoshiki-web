@@ -60,7 +60,7 @@ const headerStyle = makeStyles(
       fontSize: "18px",
       borderRadius: "3px",
       textTransform: "none",
-      color: "inherit",
+      color: "#FFFFFF",
       padding: "8px 16px",
       letterSpacing: "unset",
       "&:hover,&:focus": {
