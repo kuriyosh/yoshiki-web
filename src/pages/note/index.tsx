@@ -16,7 +16,7 @@ const NotePage: FC<PageProps<GatsbyTypes.NoteIndexQuery>> = ({ data }) => {
   const { edges: posts } = data.allMarkdownRemark
   const classes = pageStyles()
   return (
-    <Layout>
+    <Layout title="Note">
       <GridContainer justify="center">
         <GridItem xs={12} sm={12} md={12}>
           <h1 className={classes.title}>Note</h1>

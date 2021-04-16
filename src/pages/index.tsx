@@ -18,7 +18,7 @@ import Layout from "components/Layout/Layout"
 const IndexPage: FC<{}> = () => {
   const classes = profilePageStyle()
   return (
-    <Layout>
+    <Layout ogType="website">
       <GridContainer justify="center">
         <GridItem xs={12} sm={12} md={6}>
           <div className={classes.profile}>

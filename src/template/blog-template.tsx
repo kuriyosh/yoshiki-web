@@ -9,7 +9,7 @@ const BlogPost: FC<{}> = ({ data }) => {
   const classes = pageStyles()
 
   return (
-    <Layout>
+    <Layout title={post.frontmatter.title}>
       <div>
         <h1 className={classes.title}>{post.frontmatter.title}</h1>
         <article className="markdown-body">

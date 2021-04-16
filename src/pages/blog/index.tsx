@@ -18,7 +18,7 @@ const BlogPage: FC<PageProps<GatsbyTypes.BlogIndexQuery>> = ({ data }) => {
   console.log(data)
 
   return (
-    <Layout>
+    <Layout title="Blog">
       <GridContainer justify="center">
         <GridItem xs={12} sm={12} md={12}>
           <h1 className={classes.title}>Blog</h1>

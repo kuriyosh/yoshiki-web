@@ -17,7 +17,7 @@ const AppPage: FC<PageProps<GatsbyTypes.AppIndexQuery>> = ({ data }) => {
   console.log(data)
 
   return (
-    <Layout>
+    <Layout title="App">
       <GridContainer justify="center">
         <GridItem xs={12} sm={12} md={12}>
           <h1 className={classes.title}>App</h1>
