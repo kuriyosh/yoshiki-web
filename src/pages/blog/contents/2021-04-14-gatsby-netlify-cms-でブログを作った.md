@@ -8,6 +8,7 @@ tags:
   - Gatsby
 ---
 # はじめに
+
 はじめまして、佳輝といいます。以後よろしくお願い致します。
 2019 年に大学院を卒業して移行、新卒 3 年目となりボチボチ input よりも output を重視していきたいと思い、技術ブログを自作しました。
 これから更新頑張っていきたいと思います。
@@ -19,31 +20,37 @@ tags:
 なので本記事も React や Vue は何かわかるけど、Gatsby とは何かがわからない読者が一番参考になるかなと思います。
 
 # 本ブログの概要
+
 ## 本ブログの機能
+
 本ブログの機能は以下です。
 
-- **プロフィールページ**: 単純なポートフォリオ
-- **Note ページ**: 自分が勉強したことを ~~雑に殴り書きする~~ 体系的にまとめるための機能
-- **Blog ページ**: 本記事のように粒度の小さい or Note でカテゴライズできない内容を書く機能
-- **App ページ**: 制作物を供養、もとい、お披露目する機能
+* **プロフィールページ**: 単純なポートフォリオ
+* **Note ページ**: 自分が勉強したことを ~~雑に殴り書きする~~ 体系的にまとめるための機能
+* **Blog ページ**: 本記事のように粒度の小さい or Note でカテゴライズできない内容を書く機能
+* **App ページ**: 制作物を供養、もとい、お披露目する機能
 
 いずれも、Netlify CMS でページ管理しているだけで、機能と呼んでいますが、やっていることは同じです。
 
 ## 利用されている技術スタック
+
 本ブログに利用されている技術スタックについて概要を説明したいと思います。
 
 ### フロントエンド関連
-- **[Gatsby](https://www.gatsbyjs.com/)**: React で利用できる静的サイトジェネレーター、これを使ってみたく本ブログを作りました。
-- **[TypeScript](https://www.typescriptlang.org/)**: これも使ったことがなかったので使ってみました。
-- **[Material-UI](https://material-ui.com/)**: Material Design に習った UI コンポーネントライブラリです。
+
+* **[Gatsby](https://www.gatsbyjs.com/)**: React で利用できる静的サイトジェネレーター、これを使ってみたく本ブログを作りました。
+* **[TypeScript](https://www.typescriptlang.org/)**: これも使ったことがなかったので使ってみました。
+* **[Material-UI](https://material-ui.com/)**: Material Design に習った UI コンポーネントライブラリです。
 
 ### バックエンド関連
-- **[Netlify](https://www.netlify.com/)**: 単純なホスティングに加え、GitHub への特定ブランチへの push をトリガーにアプリを Build/Deploy してくれます。
-- **[Netlify CMS](https://www.netlifycms.org/)**: 本記事のブログコンテンツ管理を担当する Headless CMS です。
+
+* **[Netlify](https://www.netlify.com/)**: 単純なホスティングに加え、GitHub への特定ブランチへの push をトリガーにアプリを Build/Deploy してくれます。
+* **[Netlify CMS](https://www.netlifycms.org/)**: 本記事のブログコンテンツ管理を担当する Headless CMS です。
 
 # 利用技術の概念
 
 ## Gatsby (静的サイトジェネレーター) とは？
+
 (中学生の時初めて買ったヘアワックスは GATSBY でしたが、当然 mandom とは無関係です。)
 
 Gatsby とは React で利用できる静的サイトジェネレーターと説明されることが多い気がします。
@@ -77,9 +84,14 @@ Gatsby はビルド時に Web サイト上で利用されている外部連携 (
 
 ### 通常の React の場合
 
+![fig-nonreact](/assets/nongatsby-request.png "通常の React の場合")
+
 ### Gatsby の場合
 
+![fig-gatsby](/assets/gatsby-request.png "Gatsby の場合")
+
 ## Netlify CMS
+
 「んじゃ本ブログはブログ記事も静的コンテンツとして提供されていて、React コンポーネントを具に変更してブログ記事を一つ一つ書いているんやなぁ、大変どすなぁ」と言われると若干 No です。
 Gatsby はコンテンツ管理を外部の [Headless content management system (Headless CMS)](https://en.wikipedia.org/wiki/Headless_content_management_system) で行ってくれます。
 CMS とは Contents Manager System の略で WordPress に代表されるコンテンツ管理システムです。
@@ -102,6 +114,7 @@ Gatsby では、ビルド時にこの Markdown ファイルを読み込み、HTM
 5. 実際にブログ記事が追加される。
 
 # 勉強した流れ
+
 上記のような知見をどのようなプロセスで習得していったかを記載していきます。
 前述の通り、私は React x TypeScript はなんとなく理解できる感じでした。
 React x TypeScript の勉強には以下の参考書を利用しました。
@@ -110,21 +123,25 @@ React x TypeScript の勉強には以下の参考書を利用しました。
 React はまだまだ発展途上で旧式の実装方法と、新しい実装方法と様々に選択肢があり、実際どれを使えばよいの？と感じることが多々あります。
 これらの本は歴史的敬意を踏まえて、筆者の方がどのように考えてこの実装方法を選択しているかが記載されています。
 
-- [りあクト！ TypeScriptで始めるつらくないReact開発 第3.1版【Ⅰ. 言語・環境編】](https://oukayuka.booth.pm/items/2368045)
-- [りあクト！ TypeScriptで始めるつらくないReact開発 第3.1版【Ⅱ. React基礎編】](https://oukayuka.booth.pm/items/2368019)
-- [りあクト！ TypeScriptで始めるつらくないReact開発 第3.1版【Ⅲ. React応用編】](https://oukayuka.booth.pm/items/2367992)
+* [りあクト！ TypeScriptで始めるつらくないReact開発 第3.1版【Ⅰ. 言語・環境編】](https://oukayuka.booth.pm/items/2368045)
+* [りあクト！ TypeScriptで始めるつらくないReact開発 第3.1版【Ⅱ. React基礎編】](https://oukayuka.booth.pm/items/2368019)
+* [りあクト！ TypeScriptで始めるつらくないReact開発 第3.1版【Ⅲ. React応用編】](https://oukayuka.booth.pm/items/2367992)
 
 まず、勉強のためにできるだけ primitive な start kit から Gatsby プロジェクトを作成しました。
 本ブログは [gatsby-starter-default](https://github.com/gatsbyjs/gatsby-starter-default) から作成しました。
 
 1. とりあえず始めに公式の Gatsby tutorial を実施しました
-   - 内容は覚えてなかったりしたのですが、「こういうことしたいんだけど Tutorial に答えがあった気がするな」という場面が多々ありました。
+
+   * 内容は覚えてなかったりしたのですが、「こういうことしたいんだけど Tutorial に答えがあった気がするな」という場面が多々ありました。
 2. そうは言いつつ Gatsby + Netlify CMS を一回 deploy してみる。
-   - 本ブログの Starter Libirary には 利用していないのですが、一回 gatsby-starter-netlify-cms を Netlify 上に後悔することは非常に有益でした。「この箇所を変更するとこのファイルに影響する」、または、「こう言う設定を行いたいが、どういう実現するのか」等参考になりました。
+
+   * 本ブログの Starter Libirary には 利用していないのですが、一回 gatsby-starter-netlify-cms を Netlify 上に後悔することは非常に有益でした。「この箇所を変更するとこのファイルに影響する」、または、「こう言う設定を行いたいが、どういう実現するのか」等参考になりました。
 3. 適当な UI テンプレートから、ブログ記事を作成
-   - あまり CSS の知識がないので、今回は Creative Tim さんから提供されている無料の UI テンプレートを使いました。(ただ、TypeScript 非対応だったので TypeScript 用に書き直ました。)
+
+   * あまり CSS の知識がないので、今回は [Creative Tim さんから提供されている無料の UI テンプレート](https://www.creative-tim.com/product/material-kit-react)を使いました。(ただ、TypeScript 非対応だったので TypeScript 用に書き直ました。)
 
 # よくわかないこと or 痒いところ
+
 **`gatsby develop` と `gatsby build` 時、本来なら TypeScript で型エラーしていたら指摘して欲しいがしてくれない**
 
 TypeScript 的に型推論が効かないような場合も、VS Code としては注意してくれるのですが、ビルドエラーをすることはありません。
