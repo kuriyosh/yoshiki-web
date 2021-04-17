@@ -42,6 +42,10 @@ const Layout: FC<Props> = props => {
         <html lang="ja" />
         <meta name="description" content={data.site.siteMetadata.description} />
         <meta name="twitter:title" content={title} />
+        <meta
+          name="twitter:image"
+          content={`${data.site.siteMetadata.siteUrl}/assets/card.jpg`}
+        />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:creator" content={data.site.siteMetadata.author} />
         <meta
