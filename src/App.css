@@ -14,7 +14,7 @@ h4,
 h5,
 h6 {
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  font-weight: 300;
+  font-weight: 350;
   line-height: 1.5em;
 }
 h1,
@@ -155,4 +155,10 @@ form {
   font-size: 0.75rem;
   text-transform: uppercase;
   font-weight: 500;
+}
+
+.markdown-body img {
+  width: 100%;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
 }
