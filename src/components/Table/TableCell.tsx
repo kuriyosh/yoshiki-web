@@ -10,7 +10,7 @@ const tableCellStyles = makeStyles(
       color: "inherit",
     },
     root: {
-      fontWeight: 300,
+      fontWeight: 350,
     },
   })
 )
