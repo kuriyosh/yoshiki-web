@@ -34,7 +34,6 @@ const Layout: FC<Props> = props => {
       }
     `
   )
-  console.log(data)
 
   return (
     <>

@@ -16,7 +16,6 @@ import { graphql, PageProps } from "gatsby"
 const AppPage: FC<PageProps<GatsbyTypes.AppIndexQuery>> = ({ data }) => {
   const { edges: posts } = data.allMarkdownRemark
   const classes = pageStyles()
-  console.log(data)
 
   return (
     <Layout title="App">

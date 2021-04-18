@@ -15,7 +15,6 @@ import Button from "components/CustomButtons/Button"
 const BlogPage: FC<PageProps<GatsbyTypes.BlogIndexQuery>> = ({ data }) => {
   const { edges: posts } = data.allMarkdownRemark
   const classes = pageStyles()
-  console.log(data)
 
   return (
     <Layout title="Blog">
