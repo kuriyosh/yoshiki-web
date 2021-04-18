@@ -99,11 +99,10 @@ legend {
 a {
   text-decoration: none;
   background-color: transparent;
-  &:hover,
-  &:focus {
-    color: darken(#007bff, 5%);
-    text-decoration: none;
-  }
+}
+
+a:hover {
+  color: inherit;
 }
 
 label {
@@ -158,7 +157,7 @@ form {
 }
 
 .markdown-body img {
-  width: 100%;
+  width: 90%;
   margin-top: 3vh;
   margin-bottom: 3vh;
 }
