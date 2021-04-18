@@ -1,7 +1,7 @@
 import React, { FC } from "react"
 
 import { IconButton } from "@material-ui/core"
-import { GitHub, Web } from "@material-ui/icons"
+import { GitHub, Web, Description } from "@material-ui/icons"
 
 import GridContainer from "components/Grid/GridContainer"
 import GridItem from "components/Grid/GridItem"
@@ -62,6 +62,17 @@ const AppPage: FC<PageProps<GatsbyTypes.AppIndexQuery>> = ({ data }) => {
                       </a>
                     </IconButton>
                   )}
+
+                  {post.frontmatter?.blogUrl != undefined && (
+                    <IconButton>
+                      <a
+                        href={post.frontmatter.blogUrl}
+                        className={classes.iconLink}
+                      >
+                        <Description />
+                      </a>
+                    </IconButton>
+                  )}
                 </CardBody>
                 <CardFooter>
                   {post.frontmatter?.date && post.frontmatter.date}
@@ -89,10 +100,7 @@ export const query = graphql`
             title
             appUrl
             githubUrl
-          }
-          excerpt
-          fields {
-            slug
+            blogUrl
           }
         }
       }
