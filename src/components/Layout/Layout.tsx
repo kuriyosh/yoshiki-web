@@ -54,7 +54,7 @@ const Layout: FC<Props> = props => {
         <meta name="og:title" content={title} />
         <meta
           name="og:image"
-          content={`${data.site.siteMetadata.siteUrl}/assets/card.jpg`}
+          content={`${data.site.siteMetadata.siteUrl}/assets/card.png`}
         />
         <meta name="og:type" content={rest.ogType} />
 
