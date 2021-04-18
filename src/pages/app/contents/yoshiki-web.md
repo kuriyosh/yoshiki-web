@@ -1,6 +1,6 @@
 ---
 title: yoshiki-web
-update_date: 2021-04-11T22:29:45.969Z
+date: 2021-04-11T22:29:45.969Z
 template: app
 image: /assets/my-web-app.png
 githubUrl: https://github.com/yosyos36/yoshiki-web

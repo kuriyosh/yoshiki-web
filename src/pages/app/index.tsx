@@ -64,7 +64,7 @@ const AppPage: FC<PageProps<GatsbyTypes.AppIndexQuery>> = ({ data }) => {
                   )}
                 </CardBody>
                 <CardFooter>
-                  {post.frontmatter && post.frontmatter.date}
+                  {post.frontmatter?.date && post.frontmatter.date}
                 </CardFooter>
               </Card>
             </GridItem>
@@ -84,7 +84,7 @@ export const query = graphql`
           id
           html
           frontmatter {
-            date
+            date(formatString: "MMMM DD, YYYY")
             image
             title
             appUrl
