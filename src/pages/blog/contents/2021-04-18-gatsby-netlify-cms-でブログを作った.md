@@ -1,6 +1,6 @@
 ---
 title: Gatsby + Netlify CMS でブログを作った
-date: 2021-04-14T15:15:28.140Z
+date: 2021-04-18T13:17:28.140Z
 template: blog
 image: /assets/gatsby.png
 tags:
