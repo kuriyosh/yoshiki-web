@@ -58,3 +58,5 @@ collections:
       - { name: title, label: Title }
       - { name: body, label: Body, widget: markdown }
       - { name: "image", label: "image", widget: image }
+      - { name: "githubUrl", label: "GitHub URL", required: false }
+      - { name: "appUrl", label: "Application URL", required: false }

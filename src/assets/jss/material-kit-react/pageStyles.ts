@@ -46,6 +46,9 @@ const pageStyles = makeStyles(
       minHeight: "32px",
       textDecoration: "none",
     },
+    iconLink: {
+      color: "initial",
+    },
   })
 )
 
