@@ -161,3 +161,7 @@ form {
   margin-top: 3vh;
   margin-bottom: 3vh;
 }
+
+.markdown-body a {
+  color: #d9b752;
+}
