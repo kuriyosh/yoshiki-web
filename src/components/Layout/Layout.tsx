@@ -51,12 +51,16 @@ const Layout: FC<Props> = props => {
           name="twitter:description"
           content={data.site.siteMetadata.description}
         />
-        <meta name="og:title" content={title} />
+        <meta property="og:title" content={title} />
         <meta
-          name="og:image"
+          property="og:image"
           content={`${data.site.siteMetadata.siteUrl}/assets/card.png`}
         />
-        <meta name="og:type" content={rest.ogType} />
+        <meta property="og:type" content={rest.ogType} />
+        <meta
+          property="og:description"
+          content={data.site.siteMetadata.description}
+        />
 
         <title>{title}</title>
       </Helmet>
