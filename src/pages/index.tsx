@@ -65,11 +65,10 @@ const IndexPage: FC<{}> = () => {
             </div>
             <div>
               <p>
-                I work as Cloud Support Engineer with Amazon Web Service. My job
-                is troubleshooting services related to Windows. I'm also
-                interested in web development utilizing React and Serverless
-                architectures. <br />{" "}
-                <b>The icon is my cute pet(leopard gecko).</b>
+                I work as Support Engineer at Cloud Vendor. My job is
+                troubleshooting services related to Windows. I'm also interested
+                in web development utilizing React and Serverless architectures.{" "}
+                <br /> <b>The icon is my cute pet(leopard gecko).</b>
               </p>
             </div>
           </div>
@@ -85,21 +84,10 @@ const IndexPage: FC<{}> = () => {
                 <b>Present</b>
                 <br />
                 |<br />
-                Sept. 2020
-              </TableCell>
-              <TableCell align="center">
-                Cloud Support Engineer at Amazon Web Service Japan
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell align="center">
-                Aug. 2020
-                <br />
-                |<br />
                 Apr. 2019
               </TableCell>
               <TableCell align="center">
-                Cloud Support Associate at Amazon Web Service Japan
+                Support Engineer at Cloud Vendor
               </TableCell>
             </TableRow>
             <TableRow>
@@ -128,7 +116,7 @@ const IndexPage: FC<{}> = () => {
         </Table>
 
         <h2 className={classes.sectionTitle}>Skill</h2>
-        <p>AWS/Windows Server/Active Directory/VDI</p>
+        <p>Windows Server/Active Directory/VDI</p>
 
         <h2 className={classes.sectionTitle}>Interest</h2>
         <p>Linux/React/Serverless architecture</p>
