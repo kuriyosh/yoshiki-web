@@ -250,6 +250,11 @@ import b from "./b.ts"
 console.log(b.test) // b.test があるかどうか保証されないエラー
 ```
 
+**3. 多分 gatsby-plugin-typegen のせいで、 `gatsby develop` がループしてる気がする**
+
+GragphQL のクエリから型を作成するために、[gatsby-plugin-typegen](https://www.gatsbyjs.com/plugins/gatsby-plugin-typegen/) を使っているのですが、これのせいで gatsby develop が永遠にファイル変更を検知しているような気がします。
+`__` から始まるファイルは検知対象外にしてくれるみたいな情報があったのですが、なぜか `__generated__` ディレクトリの変更内容を検知しているようです。
+
 # おわりに
 読み返しても技術文章を書くのが下手だなという感じですが、これから output の機会を増やして慣れていきたいです。
 今後、具体的な Gatsby x Netlify CMS プロジェクトを作成する手順をメモ代わりに記載できればと思います。
