@@ -60,3 +60,4 @@ collections:
       - { name: "image", label: "image", widget: image }
       - { name: "githubUrl", label: "GitHub URL", required: false }
       - { name: "appUrl", label: "Application URL", required: false }
+      - { name: "blogUrl", label: "Blog URL", required: false }

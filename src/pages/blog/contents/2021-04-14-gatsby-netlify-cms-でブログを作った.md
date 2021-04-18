@@ -25,7 +25,7 @@ tags:
 
 本ブログの機能は以下です。
 
-* **プロフィールページ**: 単純なポートフォリオ
+* **プロフィールページ**: 自己紹介ページ
 * **Note ページ**: 自分が勉強したことを ~~雑に殴り書きする~~ 体系的にまとめるための機能
 * **Blog ページ**: 本記事のように粒度の小さい or Note でカテゴライズできない内容を書く機能
 * **App ページ**: 制作物を供養、もとい、お披露目する機能
@@ -40,7 +40,7 @@ tags:
 
 * **[Gatsby](https://www.gatsbyjs.com/)**: React で利用できる静的サイトジェネレーター、これを使ってみたく本ブログを作りました。
 * **[TypeScript](https://www.typescriptlang.org/)**: これも使ったことがなかったので使ってみました。
-* **[Material-UI](https://material-ui.com/)**: Material Design に習った UI コンポーネントライブラリです。
+* **[Material-UI](https://material-ui.com/)**: [Material Design](https://material.io/design) に習った UI コンポーネントライブラリです。
 
 ### バックエンド関連
 
@@ -66,9 +66,16 @@ Web アプリ上で大量の API 呼び出しを行い動的にユーザーに�
 しかしながら、SPA developer は React で汎用性の高い UI 部品を持っていることが想定されます。
 
 そこで、利用できるのが静的サイトジェネレーターです。
-静的サイトジェネレーターでは、SPA が JS をロードしてレンダリングする DOM を予めレンダリングして HTML ファイルとして出力します。
-また、URL パスごとに異なるページが用意されているならそのパスに対応する HTML ページも予め用意してくれます。
-本来、SPA アプリでは JS の処理が完了するまで UI が決定しなかったものを、ビルド時に JS をロードしてレンダリング済の HTML ファイルを作ってしまおうという発想です。
+静的サイトジェネレーターでは、SPA が JS をロードしてレンダリングする DOM をビルド時に予めレンダリングして HTML ファイルとして出力します。
+外部連携 (ローカルファイルの参照や外部の API 連携 等) が必要な部分は GraphQL 経由でビルド時にデータを取得し、データを注入した HTML ファイルを用意してくれます。
+
+**通常の React の場合**
+
+![fig-nonreact](/assets/nongatsby-request.png "通常の React の場合")
+
+**Gatsby の場合**
+
+![fig-gatsby](/assets/gatsby-request.png "Gatsby の場合")
 
 これにより、React で開発されたアプリでサーバー側でレンダリング処理 (Server Side Rendering) を実現でき、クライアントのリソースは大きく消費されることはありません。
 
@@ -78,71 +85,171 @@ Web アプリ上で大量の API 呼び出しを行い動的にユーザーに�
 Gatsby は React で Jamstack を実現できる静的サイトジェネレーターの 1 つです。
 React で開発した UI 資産を利用しつつ、静的な HTML コンテンツを作成することが可能となります。
 
-「んじゃ Gatsby で Web ページ作る時には 外部 API 一切使えないの？ React でよくない？」という疑問が浮かんでくれると嬉しいのですが、そうではないです。
-Gatsby はビルド時に Web サイト上で利用されている外部連携 (ローカルファイルの参照や外部の API 連携 等) が必要な部分は GraphQL 経由でビルド時に取得してくれます。
-外部連携が必要な部分に、GraphQL 経由で予めデータを fetch し、外部から取得したデータを注入した上で HTML ファイルを生成してくれます。
-
-### 通常の React の場合
-
-![fig-nonreact](/assets/nongatsby-request.png "通常の React の場合")
-
-### Gatsby の場合
-
-![fig-gatsby](/assets/gatsby-request.png "Gatsby の場合")
-
 ## Netlify CMS
 
-「んじゃ本ブログはブログ記事も静的コンテンツとして提供されていて、React コンポーネントを具に変更してブログ記事を一つ一つ書いているんやなぁ、大変どすなぁ」と言われると若干 No です。
-Gatsby はコンテンツ管理を外部の [Headless content management system (Headless CMS)](https://en.wikipedia.org/wiki/Headless_content_management_system) で行ってくれます。
+Gatsby はコンテンツ管理を外部の [Headless content management system (Headless CMS)](https://en.wikipedia.org/wiki/Headless_content_management_system) で行います。
 CMS とは Contents Manager System の略で WordPress に代表されるコンテンツ管理システムです。
-WordPress 等の通常の CMS ではコンテンツを作成するフロントエンドもフレームワークでまとめて提供されていますが、Headless CMS ではコンテンツを管理するバックエンド、追加・更新・削除する API のみが提供されます。
+CMS により、更新日時、タイトル、タグ等のメタ情報が付与されたブログ記事の管理 (追加・削除・更新) が容易になります。
+WordPress 等の通常の CMS ではコンテンツを作成するフロント UI もフレームワークでまとめて提供されていますが、Headless CMS ではコンテンツを管理するバックエンド、追加・更新・削除する機能のみが提供されます。
 
-Netlify CMS はこの Headless CMS の 1 つです。
+Netlify 自体は Web サイトのホスティングに利用される CDN サービス的なものですが、GitHub/GitLab 等の特定のリポジトリ・ブランチに push されたことトリガーにデプロイを走らせたり、私は使っていませんがサーバーレス関数が利用できたりと高機能です。
+その機能の 1 つとして提供されている、Netlify CMS はこの Headless CMS の 1 つです。
 (他の Headless CMS は色々あり、[このサイト](https://jamstack.org/headless-cms/)に一覧されています。)
 
-Netlify 自体は Web サイトのホスティングに利用される CDN サービス的なものですが、GitHub/GitLab 等の特定のブランチに push されたことトリガーにデプロイを走らせたり、私は使っていませんがサーバーレス関数が利用できたりと高機能です。
-中でも Netlify CMS と呼ばれる、静的サイトジェネレータにコンテンツ管理を注入できる機能が強力です。
+Netlify CMS では、Markdown 形式でコンテンツを管理します。
+Gatsby 側でどのような種類の記事を投稿するのか、どのようなメタ情報が必要なのかを定義します。
+本ブログでは以下のような定義をしています。
 
-ブログ記事は元のデータは全て Markdown 形式で書かれています。
-Gatsby では、ビルド時にこの Markdown ファイルを読み込み、HTML として解釈する機能を用意してます。
-コンテンツが追加される流れは以下です。
+https://github.com/yosyos36/yoshiki-web/blob/main/static/admin/config.yml
+```yml
+collections:
+  - name: blog
+    label: Blog
+    folder: src/pages/blog/contents
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { name: title, label: Title }
+      - { name: date, label: Date, widget: datetime }
+      - {
+          name: template,
+          label: Template,
+          widget: "select",
+          options: ["blog", "note", "app"],
+          default: "blog",
+        }
+      - { name: "image", label: "Image", widget: image }
+      - {
+          name: "tags",
+          label: "Tags",
+          widget: "select",
+          multiple: true,
+          options: ["React", "Gatsby", "Windows"],
+        }
+      - { name: body, label: Body, widget: markdown }
+<略>
+  - name: app
+    label: App
+    folder: src/pages/app/contents
+    create: true
+    fields:
+      - { name: date, label: Date, widget: datetime }
+      - { name: title, label: Title }
+      - { name: body, label: Body, widget: markdown }
+      - { name: "image", label: "image", widget: image }
+      - { name: "githubUrl", label: "GitHub URL", required: false }
+      - { name: "appUrl", label: "Application URL", required: false }
+      - { name: "blogUrl", label: "Blog URL", required: false }
+```
 
-1. gatsby-plugin-netlify-cms を追加し、Netlify CMS 用のページ追加機能をアプリに用意しておく。
-2. デプロイされているアプリから以下のような UI でページを追加する。
-3. Publish を押すと、連携している GitHub リポジトリに編集したページが Markdown として push される。
-4. push をトリガーとして、Netlify が Gatsby アプリのビルド・デプロイを開始する。
-5. 実際にブログ記事が追加される。
+詳細は省略しますが、ブログ記事では題名、画像、タグがメタ情報として利用されています。
+一方、App ページには本文は不要な代わりに、GitHub リポジトリの URL や、アプリの URL を設定できるようにしています。
+
+これを元に、Netlify CMS はコンテンツを追加する機能を提供してくれます。
+正確には、上記の情報を元に Netlify CMS のライブラリ (netlify-cms-app、gatsby-plugin-netlify-cms) がコンテンツ投稿を行う UI を提供してくれているような気がします。
+以下のようなコンテンツ管理機能を提供してくれます。
+
+**コンテンツ一覧画面**
+
+![fig-netlify-list](/assets/list-netlify-cms-editor.png "コンテンツ一覧画面")
+
+**コンテンツ編集画面**
+
+![fig-netlify-editor](/assets/netlify-cms-editor.png "コンテンツ編集画面")
+
+コンテンツを Publish すると、記事に対応する Markdown ファイルが GitHub リポジトリに Push されます。
+Gatsby アプリ側ではこの Markdown ファイルの情報を参照して、コンテンツをレンダリング処理を記載しておく必要があります。
+この Push をトリガーとして、Gatsby のビルドを実行し、ブログ記事がデプロイされます。
+メタデータは Markdown ファイル上で以下のように表現されます。
+
+https://github.com/yosyos36/yoshiki-web/blob/main/src/pages/blog/contents/2021-04-14-gatsby-netlify-cms-%E3%81%A7%E3%83%96%E3%83%AD%E3%82%B0%E3%82%92%E4%BD%9C%E3%81%A3%E3%81%9F.md
+```markdown
+---
+title: Gatsby + Netlify CMS でブログを作った
+date: 2021-04-14T15:15:28.140Z
+template: blog
+image: /assets/gatsby.png
+tags:
+  - React
+  - Gatsby
+---
+# はじめに
+
+はじめまして、佳輝といいます。以後よろしくお願い致します。
+2019 年に大学院を卒業して移行、新卒 3 年目となりボチボチ input よりも output を重視していきたいと思い、技術ブログを自作しました。
+これから更新頑張っていきたいと思います。
+・・・
+```
+
+上記が Netlify CMS の機能です。
 
 # 勉強した流れ
 
-上記のような知見をどのようなプロセスで習得していったかを記載していきます。
-前述の通り、私は React x TypeScript はなんとなく理解できる感じでした。
+開発における知見をどのようなプロセスで習得していったかを記載していきます。
+前述の通り、私は React x TypeScript はなんとなく理解できる程度でした。
 React x TypeScript の勉強には以下の参考書を利用しました。
-
-ちなみに以下の参考書は非常におすすめです。
-React はまだまだ発展途上で旧式の実装方法と、新しい実装方法と様々に選択肢があり、実際どれを使えばよいの？と感じることが多々あります。
-これらの本は歴史的敬意を踏まえて、筆者の方がどのように考えてこの実装方法を選択しているかが記載されています。
 
 * [りあクト！ TypeScriptで始めるつらくないReact開発 第3.1版【Ⅰ. 言語・環境編】](https://oukayuka.booth.pm/items/2368045)
 * [りあクト！ TypeScriptで始めるつらくないReact開発 第3.1版【Ⅱ. React基礎編】](https://oukayuka.booth.pm/items/2368019)
 * [りあクト！ TypeScriptで始めるつらくないReact開発 第3.1版【Ⅲ. React応用編】](https://oukayuka.booth.pm/items/2367992)
 
-まず、勉強のためにできるだけ primitive な start kit から Gatsby プロジェクトを作成しました。
+上記の参考書は非常におすすめです。
+React はまだまだ発展途上で旧式の実装方法と、新しい実装方法と様々に選択肢があり、実際どれを使えばよいの？と感じることが多々あります。
+これらの本は歴史的敬意を踏まえて、筆者の方がどのように考えてこの実装方法を選択しているかが記載されています。
+
+開発における方針として、勉強のためにできるだけ primitive な starter kit から Gatsby プロジェクトを作成し、Netlify CMS との連携機能は自作しました。
+(というより、[gatsby-starter-netlify-cms](https://github.com/netlify-templates/gatsby-starter-netlify-cms) が Gatsby v3 に対応していないようで、依存関係苦しみたくないというのが本音です。)
 本ブログは [gatsby-starter-default](https://github.com/gatsbyjs/gatsby-starter-default) から作成しました。
 
-1. とりあえず始めに公式の Gatsby tutorial を実施しました
+ブログ作成にあたっては以下のような方針で学習しました
 
-   * 内容は覚えてなかったりしたのですが、「こういうことしたいんだけど Tutorial に答えがあった気がするな」という場面が多々ありました。
+1. とりあえず始めに公式の [Gatsby tutorial](https://www.gatsbyjs.com/docs/tutorial/) を実施しました
+
+   * 最初呼んでいると内容が初歩的過ぎて心配になるのですが、後半は Gatsby 独自の概念が説明されていて有益でした。
 2. そうは言いつつ Gatsby + Netlify CMS を一回 deploy してみる。
 
-   * 本ブログの Starter Libirary には 利用していないのですが、一回 gatsby-starter-netlify-cms を Netlify 上に後悔することは非常に有益でした。「この箇所を変更するとこのファイルに影響する」、または、「こう言う設定を行いたいが、どういう実現するのか」等参考になりました。
-3. 適当な UI テンプレートから、ブログ記事を作成
-
-   * あまり CSS の知識がないので、今回は [Creative Tim さんから提供されている無料の UI テンプレート](https://www.creative-tim.com/product/material-kit-react)を使いました。(ただ、TypeScript 非対応だったので TypeScript 用に書き直ました。)
+   * 本ブログの Starter Libirary には 利用していないのですが、一回 gatsby-starter-netlify-cms を Netlify 上に公開することで、検証環境的に使えて便利でした。
+   * gatsby-starter-netlify-cms のソースコードも Gatsby と Netlify CMS の連携部分や、コンテンツのレンダリング部分を実装する上で有益でした。
 
 # よくわかないこと or 痒いところ
 
-**`gatsby develop` と `gatsby build` 時、本来なら TypeScript で型エラーしていたら指摘して欲しいがしてくれない**
+**1. `gatsby develop` と `gatsby build` 時、本来なら TypeScript で型エラーしていたら指摘して欲しいがしてくれない**
 
 TypeScript 的に型推論が効かないような場合も、VS Code としては注意してくれるのですが、ビルドエラーをすることはありません。
-TypeScritp 使っているのだから厳しくビルド時にエラーくらい吐いてくれた方が良いような気もします。
+TypeScript 使っているのだから厳しくビルド時にエラーくらい吐いてくれた方が良いような気もします。
+
+**2. TypeScript で export としたオブジェクトを、別のファイルでスプレッド構文で展開したオブジェクトを、さらに export した時に型推論が効かない**
+
+以下のような時に TypeScript の型推論が失敗します。
+tsconfig.json が悪い？Widening Literal Types 関連？
+細かい話なのですが、一応詰まっている点なのでメモしておきます。
+
+TypeScript ファイル 1
+```typescript
+const a = {
+   test: "this is a"
+}
+
+default export a
+```
+
+TypeScript ファイル 2
+```typescript
+import a from "./a.ts"
+
+const extendA = {
+   ...a,
+   b: "this is b"
+}
+```
+
+TypeScript ファイル 3
+```typescript
+import b from "./b.ts"
+
+console.log(b.test) // b.test があるかどうか保証されないエラー
+```
+
+# おわりに
+読み返しても技術文章を書くのが下手だなという感じですが、これから output の機会を増やして慣れていきたいです。
+今後、具体的な Gatsby x Netlify CMS プロジェクトを作成する手順をメモ代わりに記載できればと思います。
