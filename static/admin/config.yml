@@ -11,7 +11,7 @@ collections:
     label: Blog
     folder: src/pages/blog/contents
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: "{{year}}-{{month}}-{{day}}"
     fields:
       - { name: title, label: Title }
       - { name: date, label: Date, widget: datetime }
