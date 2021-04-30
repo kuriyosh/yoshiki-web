@@ -56,6 +56,13 @@ collections:
     fields:
       - { name: date, label: Date, widget: datetime }
       - { name: title, label: Title }
+      - {
+          name: template,
+          label: Template,
+          widget: "select",
+          options: ["blog", "note", "app"],
+          default: "app",
+        }
       - { name: body, label: Body, widget: markdown }
       - { name: "image", label: "image", widget: image }
       - { name: "githubUrl", label: "GitHub URL", required: false }
