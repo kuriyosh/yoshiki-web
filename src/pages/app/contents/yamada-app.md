@@ -1,6 +1,6 @@
 ---
 date: 2021-04-30T10:13:53.791Z
-title: yamada-app
+title: 公益財団法人 山田育英会 奨学生応募フォーム
 image: /assets/yamada-app.png
 appUrl: https://yamadakira.org/Login
 ---
