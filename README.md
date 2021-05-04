@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://www.gatsbyjs.com">
+  <a href="https://kuriyosh.net/">
     <img alt="Yoshiki" src="src/images/favicon.png" width="60" />
   </a>
 </p>
