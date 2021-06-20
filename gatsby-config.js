@@ -6,6 +6,7 @@ module.exports = {
     siteUrl: `https://kuriyosh.net/`,
   },
   plugins: [
+    `gatsby-plugin-sitemap`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
     {
