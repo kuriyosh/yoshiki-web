@@ -37,7 +37,7 @@ const IndexPage: FC<{}> = () => {
             </div>
             <div className={classes.name}>
               <h3 className={classes.title}>Yoshiki Kurihara</h3>
-              <h6>Support Engineer</h6>
+              <h6>Software Engineer</h6>
               <IconButton>
                 <a
                   href="https://www.linkedin.com/in/yoshiki-kurihara-687869157/"
@@ -65,9 +65,8 @@ const IndexPage: FC<{}> = () => {
             </div>
             <div>
               <p>
-                I work as Support Engineer at Cloud Vendor. My job is
-                troubleshooting services related to Windows. I'm also interested
-                in web development utilizing React and Serverless architectures.{" "}
+                I work as a software engineer at Yuimedi, Inc. I'm interested in
+                web development utilizing React and Serverless architectures.{" "}
                 <br /> <b>The icon is my cute pet(leopard gecko).</b>
               </p>
             </div>
@@ -84,11 +83,20 @@ const IndexPage: FC<{}> = () => {
                 <b>Present</b>
                 <br />
                 |<br />
-                Apr. 2019
+                Aug. 2021
               </TableCell>
               <TableCell align="center">
-                Support Engineer at Cloud Vendor
+                Software Engineer at Yuimedi, Inc.
               </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell align="center">
+                Jul. 2021
+                <br />
+                |<br />
+                Apr. 2019
+              </TableCell>
+              <TableCell align="center">Support Engineer at AWS</TableCell>
             </TableRow>
             <TableRow>
               <TableCell align="center">
