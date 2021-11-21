@@ -162,6 +162,11 @@ const IndexPage: FC<{}> = () => {
             Mar. 2018.
           </ListItem>
         </List>
+
+        <h2 className={classes.sectionTitle}>Certifications</h2>
+        <List className={classes.academicList}>
+          <ListItem>AWS Certified Solutions Architect</ListItem>
+        </List>
       </div>
     </Layout>
   )
