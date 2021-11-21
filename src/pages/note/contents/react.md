@@ -30,3 +30,20 @@ https://material-ui.com/api/button/#css
 
 参考
 - https://material-ui.com/customization/components/#overriding-styles-with-classes
+
+# TypeScript
+(本当は React 配下でないと思うがここに配置)
+## 型定義のテクニック
+**文字列リテラル型をキーとした、新しい型を定義**
+```ts
+type Fruit = 'apple' | 'banana' | 'orange';
+type FruitBacket = {[k in Fruit]: number};
+
+const yoshikiFruitBacket: FruitBacket = {
+    apple: 2,
+    banana: 0,
+    orange: 1
+}
+
+yoshikiFruitBacket.grape = 2; // error
+}
