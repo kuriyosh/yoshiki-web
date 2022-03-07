@@ -48,7 +48,7 @@ const IndexPage: FC<{}> = () => {
               </IconButton>
               <IconButton>
                 <a
-                  href="https://github.com/yosyos36"
+                  href="https://github.com/kuriyosh"
                   className={classes.iconLink}
                 >
                   <GitHub />
@@ -56,7 +56,7 @@ const IndexPage: FC<{}> = () => {
               </IconButton>
               <IconButton>
                 <a
-                  href="https://twitter.com/yosyos_jk"
+                  href="https://twitter.com/kuriyosh"
                   className={classes.iconLink}
                 >
                   <Twitter />
