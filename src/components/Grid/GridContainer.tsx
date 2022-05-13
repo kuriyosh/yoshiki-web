@@ -1,37 +1,16 @@
 import React, { FC } from "react"
-
-import classNames from "classnames"
-
 import { makeStyles, createStyles } from "@material-ui/core/styles"
+import { Grid, GridProps } from "@mui/material"
 
-import Grid, { GridProps } from "@material-ui/core/Grid"
-
-const gridContainerStyles = makeStyles(
-  createStyles({
-    grid: {
-      marginRight: "-15px",
-      marginLeft: "-15px",
-      width: "auto",
-    },
-  })
-)
-
-type Props = {
-  className?: string
-} & GridProps
-
-const GridContainer: FC<Props> = props => {
-  const classes = gridContainerStyles()
-
-  const { children, className, ...rest } = props
-
-  const gridContainerClasses = classNames({
-    [classes.grid]: true,
-    ...(className && { [className]: className }),
-  })
+const GridContainer: FC<GridProps> = props => {
+  const { children, ...rest } = props
 
   return (
-    <Grid container {...rest} className={gridContainerClasses}>
+    <Grid
+      container
+      {...rest}
+      sx={{ marginRight: "-15px", marginLeft: "-15px", width: "auto" }}
+    >
       {children}
     </Grid>
   )

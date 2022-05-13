@@ -1,24 +1,12 @@
 import React, { FC } from "react"
+import { Box, BoxProps } from "@mui/material"
 
-import classNames from "classnames"
-
-import cardBodyStyle from "components/Card/cardBodyStyle"
-
-type Props = {
-  className?: string
-}
-
-const CardBody: FC<Props> = props => {
-  const classes = cardBodyStyle()
-  const { className, children, ...rest } = props
-  const cardBodyClasses = classNames({
-    [classes.cardBody]: true,
-    ...(className && { [className]: className !== undefined }),
-  })
+const CardBody: FC<BoxProps> = props => {
+  const { children, ...rest } = props
   return (
-    <div className={cardBodyClasses} {...rest}>
+    <Box sx={{ padding: "0.9375rem 1.875rem", flex: "1 1 auto" }} {...rest}>
       {children}
-    </div>
+    </Box>
   )
 }
 

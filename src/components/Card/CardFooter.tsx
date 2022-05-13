@@ -1,24 +1,19 @@
 import React, { FC } from "react"
+import { Box, BoxProps } from "@mui/material"
 
-import classNames from "classnames"
-
-import cardFooterStyle from "components/Card/cardFooterStyle"
-
-type Props = {
-  className?: string
-}
-
-const CardFooter: FC<Props> = props => {
-  const classes = cardFooterStyle()
-  const { className, children, ...rest } = props
-  const cardFooterClasses = classNames({
-    [classes.cardFooter]: true,
-    ...(className && { [className]: className !== undefined }),
-  })
+const CardFooter: FC<BoxProps> = props => {
+  const { children, ...rest } = props
   return (
-    <div className={cardFooterClasses} {...rest}>
+    <Box
+      sx={{
+        alignItems: "center",
+        backgroundColor: "transparent",
+        padding: "0.9375rem 1.875rem",
+      }}
+      {...rest}
+    >
       {children}
-    </div>
+    </Box>
   )
 }
 

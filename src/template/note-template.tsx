@@ -1,21 +1,34 @@
 import React, { FC } from "react"
 import { graphql } from "gatsby"
 import Layout from "components/Layout/Layout"
+import { Box, Typography } from "@mui/material"
 
-import pageStyles from "assets/jss/material-kit-react/pageStyles"
-
-const NotePost: FC<{}> = ({ data }) => {
+// TODO: remove any type
+const NotePost: FC<{ data: any }> = ({ data }) => {
   const post = data.markdownRemark
-  const classes = pageStyles()
 
   return (
     <Layout title={post.frontmatter.title}>
-      <div>
-        <h1 className={classes.title}>{post.frontmatter.title}</h1>
+      <Box>
+        <Typography
+          sx={{
+            color: "#3C4858",
+            margin: "1.75rem 0 0.875rem",
+            textDecoration: "none",
+            fontWeight: 700,
+            fontFamily: `"Roboto Slab", "Times New Roman", serif`,
+            display: "inline-block",
+            position: "relative",
+            marginTop: "30px",
+            minHeight: "32px",
+          }}
+        >
+          {post.frontmatter.title}
+        </Typography>
         <article className="markdown-body">
           <div dangerouslySetInnerHTML={{ __html: post.html }} />
         </article>
-      </div>
+      </Box>
     </Layout>
   )
 }

@@ -1,15 +1,11 @@
 import React, { FC } from "react"
-
 import Header from "components/Header/Header"
 import HeaderLinks from "components/Header/HeaderLinks"
 import Parallax from "components/Parallax/Parallax"
 import Footer from "components/Footer/Footer"
 import MainContainer from "components/Container/MainContainer"
-
 import { useStaticQuery, graphql } from "gatsby"
-
 import { Helmet } from "react-helmet"
-
 import profileBackGround from "assets/img/profile-bg.jpg"
 
 type Props = {

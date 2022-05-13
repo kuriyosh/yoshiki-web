@@ -1,9 +1,16 @@
 import React, { FC } from "react"
-// @material-ui/core components
-import { IconButton } from "@material-ui/core"
-import { Table, TableBody, TableRow } from "@material-ui/core"
-import { List, ListItem } from "@material-ui/core"
-import { LinkedIn, Twitter, GitHub } from "@material-ui/icons"
+
+import {
+  IconButton,
+  Table,
+  TableBody,
+  TableRow,
+  Typography,
+  List,
+  ListItem,
+  Box,
+} from "@mui/material"
+import { LinkedIn, Twitter, GitHub } from "@mui/icons-material"
 
 // core components
 import GridContainer from "components/Grid/GridContainer"
@@ -11,58 +18,71 @@ import GridItem from "components/Grid/GridItem"
 import TableCell from "components/Table/TableCell"
 
 import profile from "assets/img/prof.jpg"
-import profilePageStyle from "assets/jss/pages/profilePage"
 
 import Layout from "components/Layout/Layout"
 
 const IndexPage: FC<{}> = () => {
-  const classes = profilePageStyle()
   return (
     <Layout ogType="website">
-      <GridContainer justify="center">
+      <GridContainer justifyContent="center">
         <GridItem xs={12} sm={12} md={6}>
-          <div className={classes.profile}>
-            <div>
-              <img
-                src={profile}
-                alt="..."
-                className={
-                  classes.imgRaised +
-                  " " +
-                  classes.imgFluid +
-                  " " +
-                  classes.imgRoundedCircle
-                }
-              />
-            </div>
-            <div className={classes.name}>
-              <h3 className={classes.title}>Yoshiki Kurihara</h3>
+          <Box
+            sx={{
+              textAlign: "center",
+              "& img": {
+                maxWidth: "160px",
+                width: "100%",
+                margin: "0 auto",
+                transform: "translate3d(0, -50%, 0)",
+              },
+            }}
+          >
+            <Box
+              component="img"
+              src={profile}
+              sx={{
+                boxShadow:
+                  "0 5px 15px -8px rgba(0, 0, 0, 0.24), 0 8px 10px -5px rgba(0, 0, 0, 0.2)",
+                maxWidth: "100%",
+                height: "auto",
+                borderRadius: "50% !important",
+              }}
+            />
+
+            <Box mt="-80px">
+              <Typography
+                variant="h3"
+                sx={{
+                  color: "#3C4858",
+                  margin: "1.75rem 0 0.875rem",
+                  textDecoration: "none",
+                  fontWeight: 700,
+                  fontFamily: `"Roboto Slab", "Times New Roman", serif`,
+                  display: "inline-block",
+                  position: "relative",
+                  marginTop: "30px",
+                  minHeight: "32px",
+                }}
+              >
+                Yoshiki Kurihara
+              </Typography>
               <h6>Software Engineer</h6>
               <IconButton>
-                <a
-                  href="https://www.linkedin.com/in/yoshiki-kurihara-687869157/"
-                  className={classes.iconLink}
-                >
-                  <LinkedIn />
+                <a href="https://www.linkedin.com/in/yoshiki-kurihara-687869157/">
+                  <LinkedIn sx={{ color: "#3C4858" }} />
                 </a>
               </IconButton>
               <IconButton>
-                <a
-                  href="https://github.com/kuriyosh"
-                  className={classes.iconLink}
-                >
-                  <GitHub />
+                <a href="https://github.com/kuriyosh">
+                  <GitHub sx={{ color: "#3C4858" }} />
                 </a>
               </IconButton>
               <IconButton>
-                <a
-                  href="https://twitter.com/kuriyosh"
-                  className={classes.iconLink}
-                >
-                  <Twitter />
+                <a href="https://twitter.com/kuriyosh">
+                  <Twitter sx={{ color: "#3C4858" }} />
                 </a>
               </IconButton>
-            </div>
+            </Box>
             <div>
               <p>
                 I work as a software engineer at Yuimedi, Inc. I'm interested in
@@ -70,13 +90,21 @@ const IndexPage: FC<{}> = () => {
                 <br /> <b>The icon is my cute pet(leopard gecko).</b>
               </p>
             </div>
-          </div>
+          </Box>
         </GridItem>
       </GridContainer>
 
-      <div className={classes.description}>
-        <h2 className={classes.sectionTitle}>Work/Education history</h2>
-        <Table className={classes.table} aria-label="simple table">
+      <Box
+        sx={{
+          margin: "1.071rem auto 0",
+          maxWidth: "600px",
+          textAlign: "center",
+        }}
+      >
+        <Typography variant="h2" sx={{ fontSize: "2rem" }} my={2}>
+          Work/Education history
+        </Typography>
+        <Table aria-label="simple table">
           <TableBody>
             <TableRow>
               <TableCell align="center">
@@ -123,14 +151,20 @@ const IndexPage: FC<{}> = () => {
           </TableBody>
         </Table>
 
-        <h2 className={classes.sectionTitle}>Skill</h2>
+        <Typography variant="h2" sx={{ fontSize: "2rem" }} my={2}>
+          Skill
+        </Typography>
         <p>Windows Server/Active Directory/VDI</p>
 
-        <h2 className={classes.sectionTitle}>Interest</h2>
+        <Typography variant="h2" sx={{ fontSize: "2rem" }} my={2}>
+          Interest
+        </Typography>
         <p>Linux/React/Serverless architecture</p>
 
-        <h2 className={classes.sectionTitle}>Academic Paper</h2>
-        <List className={classes.academicList}>
+        <Typography variant="h2" sx={{ fontSize: "2rem" }} my={2}>
+          Academic Paper
+        </Typography>
+        <List sx={{ fontSize: "0.75rem" }}>
           <ListItem>
             Yoshiki Kurihara, Yuki Koizumi, Toru Hasegawa and and Mayutan
             Arumaithurai, "Location-based Forwarding with Multi-Destinations in
@@ -163,11 +197,13 @@ const IndexPage: FC<{}> = () => {
           </ListItem>
         </List>
 
-        <h2 className={classes.sectionTitle}>Certifications</h2>
-        <List className={classes.academicList}>
+        <Typography variant="h2" sx={{ fontSize: "2rem" }} my={2}>
+          Certifications
+        </Typography>
+        <List sx={{ fontSize: "0.75rem" }}>
           <ListItem>AWS Certified Solutions Architect</ListItem>
         </List>
-      </div>
+      </Box>
     </Layout>
   )
 }

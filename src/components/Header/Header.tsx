@@ -1,18 +1,17 @@
 import React, { FC } from "react"
-
-import classNames from "classnames"
-
-import AppBar from "@material-ui/core/AppBar"
-import Toolbar from "@material-ui/core/Toolbar"
-import IconButton from "@material-ui/core/IconButton"
-import Button from "@material-ui/core/Button"
-import Hidden from "@material-ui/core/Hidden"
-import Drawer from "@material-ui/core/Drawer"
-
-import Menu from "@material-ui/icons/Menu"
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Button,
+  Hidden,
+  Drawer,
+  SxProps,
+  Container,
+  Box,
+} from "@mui/material"
+import { Menu } from "@mui/icons-material"
 import { Link } from "gatsby"
-
-import headerStyle from "components/Header/headerStyle"
 
 type Props = {
   rightLinks: React.ReactNode
@@ -32,8 +31,13 @@ type Props = {
   }
 }
 const Header: FC<Props> = props => {
-  const classes = headerStyle()
   const [mobileOpen, setMobileOpen] = React.useState(false)
+  const [appBarStyle, setAppBarStyle] = React.useState<SxProps>({
+    backgroundColor: "transparent !important",
+    boxShadow: "none",
+    paddingTop: "25px",
+    color: "#FFFFFF",
+  })
 
   React.useEffect(() => {
     if (props.changeColorOnScroll) {
@@ -57,41 +61,81 @@ const Header: FC<Props> = props => {
     const windowsScrollTop =
       typeof window !== `undefined` ? window.pageYOffset : 0
     if (windowsScrollTop > changeColorOnScroll.height) {
-      document.body
-        .getElementsByTagName("header")[0]
-        .classList.remove(classes["transparent"])
-      document.body
-        .getElementsByTagName("header")[0]
-        .classList.add(classes[changeColorOnScroll.color])
+      setAppBarStyle({
+        border: "0",
+        padding: "0.625rem 0",
+        marginBottom: "20px",
+        color: "#555",
+        backgroundColor: "#fff !important",
+        boxShadow:
+          "0 4px 18px 0px rgba(0, 0, 0, 0.12), 0 7px 10px -5px rgba(0, 0, 0, 0.15)",
+      })
     } else {
-      document.body
-        .getElementsByTagName("header")[0]
-        .classList.add(classes["transparent"])
-      document.body
-        .getElementsByTagName("header")[0]
-        .classList.remove(classes[changeColorOnScroll.color])
+      setAppBarStyle({
+        backgroundColor: "transparent !important",
+        boxShadow: "none",
+        paddingTop: "25px",
+        color: "#FFFFFF",
+      })
     }
   }
 
   const { rightLinks } = props
-  const appBarClasses = classNames({
-    [classes.appBar]: true,
-    [classes["transparent"]]: "transparent",
-    [classes.fixed]: true,
-  })
-  const brandComponent = (
-    <Link to="/">
-      <Button className={classes.title}>Yoshiki Web</Button>
-    </Link>
-  )
+
   return (
-    <AppBar className={appBarClasses}>
-      <Toolbar className={classes.container}>
-        <div className={classes.flex}>{brandComponent}</div>
-        <Hidden smDown implementation="css">
-          {rightLinks}
-        </Hidden>
-        <Hidden mdUp>
+    <AppBar
+      sx={{
+        display: "flex",
+        border: "0",
+        borderRadius: "3px",
+        padding: "0.625rem 0",
+        marginBottom: "20px",
+        color: "#555",
+        width: "100%",
+        backgroundColor: "#fff",
+        boxShadow:
+          "0 4px 18px 0px rgba(0, 0, 0, 0.12), 0 7px 10px -5px rgba(0, 0, 0, 0.15)",
+        transition: "all 150ms ease 0s",
+        alignItems: "center",
+        flexFlow: "row nowrap",
+        justifyContent: "flex-start",
+        position: "fixed",
+        zIndex: 1100,
+        ...appBarStyle,
+      }}
+    >
+      <Toolbar
+        component={Container}
+        sx={{
+          minHeight: "50px",
+          flex: "1",
+          alignItems: "center",
+          justifyContent: "space-between",
+          display: "flex",
+          flexWrap: "nowrap",
+        }}
+      >
+        <Link to="/">
+          <Button
+            sx={{
+              lineHeight: "30px",
+              fontSize: "18px",
+              borderRadius: "3px",
+              textTransform: "none",
+              color: "#FFFFFF",
+              padding: "8px 16px",
+              letterSpacing: "unset",
+              "&:hover,&:focus": {
+                color: "inherit",
+                background: "transparent",
+              },
+            }}
+          >
+            Yoshiki Web
+          </Button>
+        </Link>
+        <Box sx={{ display: { md: "block", xs: "none" } }}>{rightLinks}</Box>
+        <Box sx={{ display: { md: "none", xs: "block" } }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -99,22 +143,42 @@ const Header: FC<Props> = props => {
           >
             <Menu />
           </IconButton>
-        </Hidden>
+        </Box>
       </Toolbar>
 
-      <Hidden mdUp implementation="js">
+      <Box sx={{ display: { md: "block", xs: "none" } }}>
         <Drawer
           variant="temporary"
           anchor={"right"}
           open={mobileOpen}
-          classes={{
-            paper: classes.drawerPaper,
-          }}
           onClose={handleDrawerToggle}
+          sx={{
+            transition: "all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1)",
+            border: "none",
+            bottom: "0",
+            transitionProperty: "top, bottom, width",
+            transitionDuration: ".2s, .2s, .35s",
+            transitionTimingFunction: "linear, linear, ease",
+            width: "260px",
+            position: "fixed",
+            display: "block",
+            top: "0",
+            height: "100vh",
+            right: "0",
+            left: "auto",
+            visibility: "visible",
+            overflowY: "visible",
+            borderTop: "none",
+            textAlign: "left",
+            paddingRight: "0px",
+            paddingLeft: "0",
+            boxShadow:
+              "0 10px 30px -12px rgba(0, 0, 0, 0.42), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2)",
+          }}
         >
-          <div className={classes.appResponsive}>{rightLinks}</div>
+          <Box sx={{ margin: "20px 10px" }}>{rightLinks}</Box>
         </Drawer>
-      </Hidden>
+      </Box>
     </AppBar>
   )
 }

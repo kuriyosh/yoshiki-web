@@ -22,6 +22,3 @@ $ yarn install
 # Run dev server
 $ yarn develop
 ```
-
-## 📜 License
-- Copyright (c) 2017 Creative Tim

@@ -1,33 +1,42 @@
 import React, { FC } from "react"
+import { Box, Container, Link } from "@mui/material"
 
-import classNames from "classnames"
-
-import footerStyle from "components/Footer/footerStyle"
-
-type Props = {
-  whiteFont?: boolean
-}
-
-const Footer: FC<Props> = props => {
-  const classes = footerStyle()
-  const { whiteFont } = props
-  const footerClasses = classNames({
-    [classes.footer]: true,
-    [classes.footerWhiteFont]: whiteFont,
-  })
+const Footer: FC = () => {
   return (
-    <footer className={footerClasses}>
-      <div className={classes.container}>
-        <div className={classes.left}>
-          <a href="/" className={classes.block}>
+    <Box
+      component="footer"
+      sx={{
+        padding: "0.9375rem 0",
+        textAlign: "center",
+        display: "flex",
+        zIndex: 2,
+        position: "relative",
+      }}
+    >
+      <Container>
+        <Box sx={{ float: "left", display: "block" }}>
+          <Link
+            href="/"
+            sx={{
+              color: "inherit",
+              padding: "0.9375rem",
+              fontWeight: 500,
+              fontSize: "12px",
+              textTransform: "uppercase",
+              borderRadius: "3px",
+              textDecoration: "none",
+              position: "relative",
+              display: "block",
+            }}
+          >
             Yoshiki Web
-          </a>
-        </div>
-        <div className={classes.right}>
+          </Link>
+        </Box>
+        <Box sx={{ padding: "15px 0", margin: "0", float: "right" }}>
           &copy; {new Date().getFullYear()} , Yoshiki Kurihara
-        </div>
-      </div>
-    </footer>
+        </Box>
+      </Container>
+    </Box>
   )
 }
 

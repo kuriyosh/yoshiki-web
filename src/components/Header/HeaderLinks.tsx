@@ -1,55 +1,86 @@
 import React, { FC } from "react"
-
-import { Link } from "gatsby"
-import List from "@material-ui/core/List"
-import ListItem from "@material-ui/core/ListItem"
-
+import { List, Button, ListItem, Link } from "@mui/material"
 import {
   Person,
   EmojiEmotions,
   MenuBook,
   Description,
-} from "@material-ui/icons"
+} from "@mui/icons-material"
 
-import Button from "components/CustomButtons/Button"
+const HeaderLinks: FC = () => {
+  const links = [
+    {
+      to: "/",
+      icon: Person,
+      title: "Profile",
+    },
+    {
+      to: "/note",
+      icon: MenuBook,
+      title: "Note",
+    },
+    {
+      to: "/blog",
+      icon: Description,
+      title: "Blog",
+    },
+    {
+      to: "/app",
+      icon: EmojiEmotions,
+      title: "App",
+    },
+  ]
 
-import headerLinksStyle from "components/Header/HeaderLinkStyle"
-
-const HeaderLinks: FC<{}> = props => {
-  const classes = headerLinksStyle()
   return (
-    <List className={classes.list}>
-      <ListItem className={classes.listItem}>
-        <Link to="/" className={classes.link}>
-          <Button color="transparent" className={classes.navLink}>
-            <Person className={classes.icons} /> Profile
-          </Button>
-        </Link>
-      </ListItem>
-
-      <ListItem className={classes.listItem}>
-        <Link to="/note" className={classes.link}>
-          <Button color="transparent" className={classes.navLink}>
-            <MenuBook className={classes.icons} /> Note
-          </Button>
-        </Link>
-      </ListItem>
-
-      <ListItem className={classes.listItem}>
-        <Link to="/blog" className={classes.link}>
-          <Button color="transparent" className={classes.navLink}>
-            <Description className={classes.icons} /> Blog
-          </Button>
-        </Link>
-      </ListItem>
-
-      <ListItem className={classes.listItem}>
-        <Link to="/app" className={classes.link}>
-          <Button color="transparent" className={classes.navLink}>
-            <EmojiEmotions className={classes.icons} /> App
-          </Button>
-        </Link>
-      </ListItem>
+    <List
+      sx={{
+        fontSize: "14px",
+        margin: 0,
+        paddingLeft: "0",
+        listStyle: "none",
+        paddingTop: "0",
+        paddingBottom: "0",
+        color: "inherit",
+      }}
+    >
+      {links.map(link => (
+        <ListItem
+          sx={{
+            float: "left",
+            color: "inherit",
+            position: "relative",
+            display: "block",
+            width: { sm: "100%", md: "auto" },
+            margin: "0",
+            padding: "0",
+            "&:after": {
+              width: { sm: "calc(100% - 30px)" },
+              content: { sm: '""', md: "none" },
+              display: { sm: "block" },
+              height: { sm: "1px" },
+              marginLeft: { sm: "15px" },
+              backgroundColor: { sm: "#e5e5e5" },
+            },
+          }}
+        >
+          <Link href={link.to} color="inherit" underline="none">
+            <Button
+              sx={{
+                color: "inherit",
+                padding: "0.9375rem",
+                fontWeight: 400,
+                fontSize: "12px",
+                textTransform: "uppercase",
+              }}
+            >
+              <link.icon
+                sx={{ width: "20px", height: "20px", marginRight: "3px" }}
+              />
+              {link.title}
+            </Button>
+          </Link>
+        </ListItem>
+      ))}
     </List>
   )
 }

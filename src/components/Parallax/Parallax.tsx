@@ -1,7 +1,5 @@
 import React, { FC } from "react"
-
-import classNames from "classnames"
-import parallaxStyle from "components/Parallax/parallaxStyle"
+import { Box } from "@mui/material"
 
 type Props = {
   className?: string
@@ -35,30 +33,41 @@ const Parallax: FC<Props> = props => {
       typeof window !== `undefined` ? window.pageYOffset / 3 : 0
     setTransform("translate3d(0," + windowScrollTop + "px,0)")
   }
-  const { filter, className, children, image, small } = props
-  const classes = parallaxStyle()
-  const parallaxClasses = classNames({
-    [classes.parallax]: true,
-    [classes.filter]: filter,
-    [classes.small]: small,
-    ...(className && { [className]: className !== undefined }),
-  })
-
+  const { children, image } = props
   return (
-    <div
-      className={parallaxClasses}
-      style={{
+    <Box
+      sx={{
+        height: "380px",
+        maxHeight: "1000px",
+        overflow: "hidden",
+        position: "relative",
+        backgroundPosition: "center center",
+        backgroundSize: "cover",
+        margin: "0",
+        padding: "0",
+        border: "0",
+        display: "flex",
+        alignItems: "center",
         backgroundImage: `url(${image})`,
         transform: transform,
+        "&:before": {
+          background: "rgba(0, 0, 0, 0.5)",
+        },
+        "&:after,&:before": {
+          position: "absolute",
+          zIndex: "1",
+          width: "100%",
+          height: "100%",
+          display: "block",
+          left: "0",
+          top: "0",
+          content: "''",
+        },
       }}
     >
       {children}
-    </div>
+    </Box>
   )
-}
-
-Parallax.defaultProps = {
-  className: "",
 }
 
 export default Parallax
