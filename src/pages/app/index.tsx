@@ -1,124 +1,109 @@
-import React, { FC } from "react"
 import { Box, IconButton, Typography } from "@mui/material"
 import { GitHub, Web, Description } from "@mui/icons-material"
-import GridContainer from "components/Grid/GridContainer"
-import GridItem from "components/Grid/GridItem"
-import Card from "components/Card/Card"
-import CardBody from "components/Card/CardBody"
-import CardFooter from "components/Card/CardFooter"
-import Layout from "components/Layout/Layout"
-import { graphql, PageProps } from "gatsby"
+import GridContainer from "components/GridContainer"
+import GridItem from "components/GridItem"
+import Card from "components/Card"
+import CardBody from "components/CardBody"
+import CardFooter from "components/CardFooter"
+import { App } from "types"
+import { GetStaticProps, NextPage } from "next"
+import { parserDirMarkdown } from "lib/markdownParser"
+import { appContentPath } from "lib/folderPaths"
+import { isApp } from "lib/typeChecker"
+import dayjs from "dayjs"
 
-const AppPage: FC<PageProps<GatsbyTypes.AppIndexQuery>> = ({ data }) => {
-  const { edges: posts } = data.allMarkdownRemark
+type Props = {
+  apps: ({ id: string; html: string } & App)[]
+}
 
+const AppPage: NextPage<Props> = ({ apps }) => {
   return (
-    <Layout title="App">
-      <GridContainer justifyContent="center">
-        <GridItem xs={12} sm={12} md={12}>
-          <Typography
-            sx={{
-              color: "#3C4858",
-              margin: "1.75rem 0 0.875rem",
-              textDecoration: "none",
-              fontWeight: 700,
-              fontFamily: `"Roboto Slab", "Times New Roman", serif`,
-              display: "inline-block",
-              position: "relative",
-              marginTop: "30px",
-              minHeight: "32px",
-            }}
-          >
-            App
-          </Typography>
+    <GridContainer justifyContent="center">
+      <GridItem xs={12} sm={12} md={12}>
+        <Typography
+          variant="h1"
+          my={2}
+          color="primary"
+          fontWeight="700"
+          sx={{
+            fontFamily: `"Roboto Slab", "Times New Roman", serif`,
+          }}
+        >
+          App
+        </Typography>
+      </GridItem>
+
+      {apps.map(app => (
+        <GridItem xs={12} sm={6} md={6} key={app.id}>
+          <Card>
+            {app.image != undefined && (
+              <Box
+                component="img"
+                sx={{
+                  width: "100%",
+                  borderTopLeftRadius: "calc(.25rem - 1px)",
+                  borderTopRightRadius: "calc(.25rem - 1px)",
+                }}
+                src={app.image}
+                alt="Card-img-cap"
+              />
+            )}
+            <CardBody>
+              <Typography
+                variant="h5"
+                color="primary"
+                sx={{
+                  color: "#3C4858",
+                  margin: "1.75rem 0 0.875rem",
+                  textDecoration: "none",
+                  fontWeight: 700,
+                  fontFamily: `"Roboto Slab", "Times New Roman", serif`,
+                  marginTop: ".625rem",
+                }}
+              >
+                {app.title}
+              </Typography>
+              <div dangerouslySetInnerHTML={{ __html: app.html ?? "" }} />
+
+              {app.githubUrl != undefined && (
+                <IconButton>
+                  <a href={app.githubUrl}>
+                    <GitHub sx={{ color: "initial" }} />
+                  </a>
+                </IconButton>
+              )}
+
+              {app.appUrl != undefined && (
+                <IconButton>
+                  <a href={app.appUrl}>
+                    <Web sx={{ color: "initial" }} />
+                  </a>
+                </IconButton>
+              )}
+
+              {app.blogUrl != undefined && (
+                <IconButton>
+                  <a href={app.blogUrl}>
+                    <Description />
+                  </a>
+                </IconButton>
+              )}
+            </CardBody>
+            <CardFooter>{dayjs(app.date).format("YYYY/MM/DD")}</CardFooter>
+          </Card>
         </GridItem>
-
-        {posts &&
-          posts.map(({ node: post }) => (
-            <GridItem xs={12} sm={6} md={6}>
-              <Card>
-                {post.frontmatter?.image != undefined && (
-                  <Box
-                    component="img"
-                    sx={{
-                      width: "100%",
-                      borderTopLeftRadius: "calc(.25rem - 1px)",
-                      borderTopRightRadius: "calc(.25rem - 1px)",
-                    }}
-                    src={post.frontmatter.image}
-                    alt="Card-img-cap"
-                  />
-                )}
-                <CardBody>
-                  <Typography
-                    variant="h3"
-                    sx={{
-                      color: "#3C4858",
-                      margin: "1.75rem 0 0.875rem",
-                      textDecoration: "none",
-                      fontWeight: 700,
-                      fontFamily: `"Roboto Slab", "Times New Roman", serif`,
-                      marginTop: ".625rem",
-                    }}
-                  >
-                    {post.frontmatter && post.frontmatter.title}
-                  </Typography>
-                  <div dangerouslySetInnerHTML={{ __html: post.html ?? "" }} />
-
-                  {post.frontmatter?.githubUrl != undefined && (
-                    <IconButton>
-                      <a href={post.frontmatter.githubUrl}>
-                        <GitHub sx={{ color: "initial" }} />
-                      </a>
-                    </IconButton>
-                  )}
-
-                  {post.frontmatter?.appUrl != undefined && (
-                    <IconButton>
-                      <a href={post.frontmatter.appUrl}>
-                        <Web sx={{ color: "initial" }} />
-                      </a>
-                    </IconButton>
-                  )}
-
-                  {post.frontmatter?.blogUrl != undefined && (
-                    <IconButton>
-                      <a href={post.frontmatter.blogUrl}>
-                        <Description />
-                      </a>
-                    </IconButton>
-                  )}
-                </CardBody>
-                <CardFooter>
-                  {post.frontmatter?.date && post.frontmatter.date}
-                </CardFooter>
-              </Card>
-            </GridItem>
-          ))}
-      </GridContainer>
-    </Layout>
+      ))}
+    </GridContainer>
   )
 }
 
 export default AppPage
 
-export const query = graphql`
-  query AppIndex {
-    allMarkdownRemark(filter: { frontmatter: { template: { eq: "app" } } }) {
-      edges {
-        node {
-          id
-          html
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            image
-            title
-            appUrl
-            githubUrl
-            blogUrl
-          }
-        }
-      }
-    }
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const apps = await parserDirMarkdown(appContentPath, isApp)
+  return {
+    props: {
+      apps,
+    },
   }
-`
+}

@@ -1,104 +1,86 @@
-import React, { FC } from "react"
-import Layout from "components/Layout/Layout"
-import { Link, graphql, PageProps } from "gatsby"
-import GridContainer from "components/Grid/GridContainer"
-import GridItem from "components/Grid/GridItem"
-import Card from "components/Card/Card"
-import CardBody from "components/Card/CardBody"
-import CardFooter from "components/Card/CardFooter"
+import Link from "next/link"
+import GridContainer from "components/GridContainer"
+import GridItem from "components/GridItem"
+import Card from "components/Card"
+import CardBody from "components/CardBody"
+import CardFooter from "components/CardFooter"
 import { Box, Button, Typography } from "@mui/material"
+import { Blog } from "types"
+import { GetStaticProps, NextPage } from "next"
+import { parserDirMarkdown } from "lib/markdownParser"
+import { isBlog } from "lib/typeChecker"
+import { blogContentPath } from "lib/folderPaths"
+import dayjs from "dayjs"
 
-const BlogPage: FC<PageProps<GatsbyTypes.BlogIndexQuery>> = ({ data }) => {
-  const { edges: posts } = data.allMarkdownRemark
+type Props = {
+  blogs: ({ id: string } & Blog)[]
+}
 
+const BlogPage: NextPage<Props> = ({ blogs }) => {
   return (
-    <Layout title="Blog">
-      <GridContainer justifyContent="center">
-        <GridItem xs={12} sm={12} md={12}>
-          <Typography
-            sx={{
-              color: "#3C4858",
-              margin: "1.75rem 0 0.875rem",
-              textDecoration: "none",
-              fontWeight: 700,
-              fontFamily: `"Roboto Slab", "Times New Roman", serif`,
-              display: "inline-block",
-              position: "relative",
-              marginTop: "30px",
-              minHeight: "32px",
-            }}
-          >
-            Blog
-          </Typography>
-        </GridItem>
+    <GridContainer justifyContent="center">
+      <GridItem xs={12} sm={12} md={12}>
+        <Typography
+          fontWeight="medium"
+          variant="h1"
+          color="primary"
+          my={2}
+          sx={{
+            fontFamily: `"Roboto Slab", "Times New Roman", serif`,
+          }}
+        >
+          Blog
+        </Typography>
+      </GridItem>
 
-        {posts &&
-          posts.map(({ node: post }) => (
-            <GridItem xs={12} sm={6} md={6}>
-              <Card>
-                {post.frontmatter?.image != undefined && (
-                  <Box
-                    component="img"
-                    sx={{
-                      width: "100%",
-                      borderTopLeftRadius: "calc(.25rem - 1px)",
-                      borderTopRightRadius: "calc(.25rem - 1px)",
-                    }}
-                    src={post.frontmatter.image}
-                    alt="Card-img-cap"
-                  />
-                )}
-                <CardBody>
-                  <Typography
-                    variant="h3"
-                    sx={{
-                      marginTop: ".625rem",
-                      color: "#3C4858",
-                      margin: "1.75rem 0 0.875rem",
-                      textDecoration: "none",
-                      fontWeight: 700,
-                      fontSize: "2rem",
-                      fontFamily: `"Roboto Slab", "Times New Roman", serif`,
-                    }}
-                  >
-                    {post.frontmatter && post.frontmatter.title}
-                  </Typography>
-                  <p>{post.excerpt}</p>
-                  <Link to={post.fields?.slug ?? "/"}>
-                    <Button color="primary">READ</Button>
-                  </Link>
-                </CardBody>
-                <CardFooter>
-                  {post.frontmatter && post.frontmatter.date}
-                </CardFooter>
-              </Card>
-            </GridItem>
-          ))}
-      </GridContainer>
-    </Layout>
+      {blogs.map(blog => (
+        <GridItem xs={12} sm={6} md={6} key={blog.id}>
+          <Card>
+            {blog.image != undefined && (
+              <Box
+                component="img"
+                sx={{
+                  width: "100%",
+                  borderTopLeftRadius: "calc(.25rem - 1px)",
+                  borderTopRightRadius: "calc(.25rem - 1px)",
+                }}
+                src={blog.image}
+                alt="Card-img-cap"
+              />
+            )}
+            <CardBody>
+              <Typography
+                color="primary"
+                my={1}
+                variant="h5"
+                fontWeight="medium"
+                sx={{
+                  fontFamily: `"Roboto Slab", "Times New Roman", serif`,
+                }}
+              >
+                {blog.title}
+              </Typography>
+              <Link href={`/blog/${blog.id}`}>
+                <Button color="primary" variant="contained">
+                  READ
+                </Button>
+              </Link>
+            </CardBody>
+            <CardFooter>{dayjs(blog.date).format("YYYY/MM/DD")}</CardFooter>
+          </Card>
+        </GridItem>
+      ))}
+    </GridContainer>
   )
 }
 
 export default BlogPage
 
-export const query = graphql`
-  query BlogIndex {
-    allMarkdownRemark(filter: { frontmatter: { template: { eq: "blog" } } }) {
-      edges {
-        node {
-          id
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            image
-            tags
-            title
-          }
-          excerpt
-          fields {
-            slug
-          }
-        }
-      }
-    }
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const blogs = await parserDirMarkdown(blogContentPath, isBlog)
+  return {
+    props: {
+      blogs,
+    },
   }
-`
+}

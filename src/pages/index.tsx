@@ -1,5 +1,3 @@
-import React, { FC } from "react"
-
 import {
   IconButton,
   Table,
@@ -11,19 +9,15 @@ import {
   Box,
 } from "@mui/material"
 import { LinkedIn, Twitter, GitHub } from "@mui/icons-material"
+import GridContainer from "components/GridContainer"
+import GridItem from "components/GridItem"
+import TableCell from "components/TableCell"
+import profile from "../../public/images/prof.jpg"
+import { NextPage } from "next"
 
-// core components
-import GridContainer from "components/Grid/GridContainer"
-import GridItem from "components/Grid/GridItem"
-import TableCell from "components/Table/TableCell"
-
-import profile from "assets/img/prof.jpg"
-
-import Layout from "components/Layout/Layout"
-
-const IndexPage: FC<{}> = () => {
+const IndexPage: NextPage = () => {
   return (
-    <Layout ogType="website">
+    <>
       <GridContainer justifyContent="center">
         <GridItem xs={12} sm={12} md={6}>
           <Box
@@ -37,9 +31,10 @@ const IndexPage: FC<{}> = () => {
               },
             }}
           >
+            {/* TODO: next/image に置き換え */}
             <Box
               component="img"
-              src={profile}
+              src={profile.src}
               sx={{
                 boxShadow:
                   "0 5px 15px -8px rgba(0, 0, 0, 0.24), 0 8px 10px -5px rgba(0, 0, 0, 0.2)",
@@ -48,48 +43,43 @@ const IndexPage: FC<{}> = () => {
                 borderRadius: "50% !important",
               }}
             />
-
             <Box mt="-80px">
               <Typography
                 variant="h3"
+                color="primary"
+                fontWeight="medium"
+                my={2}
                 sx={{
-                  color: "#3C4858",
-                  margin: "1.75rem 0 0.875rem",
-                  textDecoration: "none",
-                  fontWeight: 700,
                   fontFamily: `"Roboto Slab", "Times New Roman", serif`,
-                  display: "inline-block",
-                  position: "relative",
-                  marginTop: "30px",
-                  minHeight: "32px",
                 }}
               >
                 Yoshiki Kurihara
               </Typography>
-              <h6>Software Engineer</h6>
-              <IconButton>
-                <a href="https://www.linkedin.com/in/yoshiki-kurihara-687869157/">
-                  <LinkedIn sx={{ color: "#3C4858" }} />
-                </a>
+              <Typography
+                variant="h6"
+                sx={{
+                  fontFamily: `"Roboto Slab", "Times New Roman", serif`,
+                }}
+              >
+                Software Engineer
+              </Typography>
+              <IconButton href="https://www.linkedin.com/in/yoshiki-kurihara-687869157/">
+                <LinkedIn sx={{ color: "primary" }} />
               </IconButton>
-              <IconButton>
-                <a href="https://github.com/kuriyosh">
-                  <GitHub sx={{ color: "#3C4858" }} />
-                </a>
+              <IconButton href="https://github.com/kuriyosh">
+                <GitHub sx={{ color: "primary" }} />
               </IconButton>
-              <IconButton>
-                <a href="https://twitter.com/kuriyosh">
-                  <Twitter sx={{ color: "#3C4858" }} />
-                </a>
+              <IconButton href="https://twitter.com/kuriyosh">
+                <Twitter sx={{ color: "primary" }} />
               </IconButton>
             </Box>
-            <div>
-              <p>
-                I work as a software engineer at Yuimedi, Inc. I'm interested in
-                web development utilizing React and Serverless architectures.{" "}
-                <br /> <b>The icon is my cute pet(leopard gecko).</b>
-              </p>
-            </div>
+            <Typography>
+              I work as a software engineer at Yuimedi, Inc. I&apos;m interested
+              in web development utilizing React and Serverless architectures.{" "}
+            </Typography>
+            <Typography fontWeight="medium">
+              The icon is my cute pet(leopard gecko).
+            </Typography>
           </Box>
         </GridItem>
       </GridContainer>
@@ -167,33 +157,34 @@ const IndexPage: FC<{}> = () => {
         <List sx={{ fontSize: "0.75rem" }}>
           <ListItem>
             Yoshiki Kurihara, Yuki Koizumi, Toru Hasegawa and and Mayutan
-            Arumaithurai, "Location-based Forwarding with Multi-Destinations in
-            NDN Networks," IEICE Transactions on Communications, Sept. 2019.
+            Arumaithurai, &quot;Location-based Forwarding with
+            Multi-Destinations in NDN Networks,&quot; IEICE Transactions on
+            Communications, Sept. 2019.
           </ListItem>
           <ListItem>
-            Yoshiki Kurihara, Yuki Koizumi and Toru Hasegawa, "Computing Node
-            Selection for Location-based Service in NDN Networks," in
+            Yoshiki Kurihara, Yuki Koizumi and Toru Hasegawa, &apos;Computing
+            Node Selection for Location-based Service in NDN Networks,&quot; in
             Proceedings of IEEE International Symposium on Local and
             Metropolitan Area Networks (LANMAN) 2019, July 2019.
           </ListItem>
           <ListItem>
             Kentaro Kita, Yoshiki Kurihara, Koizumi Yuki, and Toru Hasegawa,
-            "Location Privacy Protection with a Semi-honest Anonymizer in
-            Information Centric Networking," in Proceedings of ACM ICN, Sept.
-            2018.
+            &quot;Location Privacy Protection with a Semi-honest Anonymizer in
+            Information Centric Networking,&quot; in Proceedings of ACM ICN,
+            Sept. 2018.
           </ListItem>
           <ListItem>
-            Yoshiki Kurihara, Yuki Koizumi and Toru Hasegawa, "Compact Data
-            Structures for Location-based Forwarding in NDN Networks," in
+            Yoshiki Kurihara, Yuki Koizumi and Toru Hasegawa, &quot;Compact Data
+            Structures for Location-based Forwarding in NDN Networks,&quot; in
             Proceedings of IEEE ICC 2018 Workshop on Information Centric Network
             Solutions for Real-World Applications (ICNSRA 2018), pp. 1-6, May
             2018.
           </ListItem>
           <ListItem>
-            Yoshiki Kurihara, Yuki Koizumi and Toru Hasegawa, "Replicating a
-            Rendezvous Node for a Core-based Tree Multicast Protocol in NDN
-            Networks for Providing Low Latency," IEICE Communications Express,
-            Mar. 2018.
+            Yoshiki Kurihara, Yuki Koizumi and Toru Hasegawa, &quot;Replicating
+            a Rendezvous Node for a Core-based Tree Multicast Protocol in NDN
+            Networks for Providing Low Latency,&quot; IEICE Communications
+            Express, Mar. 2018.
           </ListItem>
         </List>
 
@@ -204,7 +195,7 @@ const IndexPage: FC<{}> = () => {
           <ListItem>AWS Certified Solutions Architect</ListItem>
         </List>
       </Box>
-    </Layout>
+    </>
   )
 }
 
