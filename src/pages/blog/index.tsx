@@ -85,7 +85,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   const blogs = await parserDirMarkdown(blogContentPath, isBlog)
   return {
     props: {
-      blogs,
+      blogs: blogs.sort((a, b) => (a.date < b.date ? 1 : -1)),
     },
   }
 }
