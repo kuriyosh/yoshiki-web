@@ -11,6 +11,8 @@ import { parserDirMarkdown } from "lib/markdownParser"
 import { isNote } from "lib/typeChecker"
 import dayjs from "dayjs"
 import { notesContentPath } from "lib/folderPaths"
+import { Meta } from "components/Meta"
+import { SITE_TITLE, SITE_URL } from "../../constants"
 
 type Props = {
   notes: ({ id: string } & Note)[]
@@ -19,6 +21,7 @@ type Props = {
 const NotePage: NextPage<Props> = ({ notes }) => {
   return (
     <>
+      <Meta title={`Blog - ${SITE_TITLE}`} url={`${SITE_URL}/note`} />
       <GridContainer justifyContent="center">
         <GridItem xs={12} sm={12} md={12}>
           <Typography

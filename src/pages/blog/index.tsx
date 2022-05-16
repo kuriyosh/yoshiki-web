@@ -11,6 +11,8 @@ import { parserDirMarkdown } from "lib/markdownParser"
 import { isBlog } from "lib/typeChecker"
 import { blogContentPath } from "lib/folderPaths"
 import dayjs from "dayjs"
+import { Meta } from "components/Meta"
+import { SITE_TITLE, SITE_URL } from "../../constants"
 
 type Props = {
   blogs: ({ id: string } & Blog)[]
@@ -18,59 +20,62 @@ type Props = {
 
 const BlogPage: NextPage<Props> = ({ blogs }) => {
   return (
-    <GridContainer justifyContent="center">
-      <GridItem xs={12} sm={12} md={12}>
-        <Typography
-          fontWeight="medium"
-          variant="h1"
-          color="primary"
-          my={2}
-          sx={{
-            fontFamily: `"Roboto Slab", "Times New Roman", serif`,
-          }}
-        >
-          Blog
-        </Typography>
-      </GridItem>
-
-      {blogs.map(blog => (
-        <GridItem xs={12} sm={6} md={6} key={blog.id}>
-          <Card>
-            {blog.image != undefined && (
-              <Box
-                component="img"
-                sx={{
-                  width: "100%",
-                  borderTopLeftRadius: "calc(.25rem - 1px)",
-                  borderTopRightRadius: "calc(.25rem - 1px)",
-                }}
-                src={blog.image}
-                alt="Card-img-cap"
-              />
-            )}
-            <CardBody>
-              <Typography
-                color="primary"
-                my={1}
-                variant="h5"
-                fontWeight="medium"
-                sx={{
-                  fontFamily: `"Roboto Slab", "Times New Roman", serif`,
-                }}
-              >
-                {blog.title}
-              </Typography>
-              <Link href={`/blog/${blog.id}`}>
-                <Button color="primary" variant="contained">
-                  READ
-                </Button>
-              </Link>
-            </CardBody>
-            <CardFooter>{dayjs(blog.date).format("YYYY/MM/DD")}</CardFooter>
-          </Card>
+    <>
+      <Meta title={`Blog - ${SITE_TITLE}`} url={`${SITE_URL}/blog`} />
+      <GridContainer justifyContent="center">
+        <GridItem xs={12} sm={12} md={12}>
+          <Typography
+            fontWeight="medium"
+            variant="h1"
+            color="primary"
+            my={2}
+            sx={{
+              fontFamily: `"Roboto Slab", "Times New Roman", serif`,
+            }}
+          >
+            Blog
+          </Typography>
         </GridItem>
-      ))}
-    </GridContainer>
+
+        {blogs.map(blog => (
+          <GridItem xs={12} sm={6} md={6} key={blog.id}>
+            <Card>
+              {blog.image != undefined && (
+                <Box
+                  component="img"
+                  sx={{
+                    width: "100%",
+                    borderTopLeftRadius: "calc(.25rem - 1px)",
+                    borderTopRightRadius: "calc(.25rem - 1px)",
+                  }}
+                  src={blog.image}
+                  alt="Card-img-cap"
+                />
+              )}
+              <CardBody>
+                <Typography
+                  color="primary"
+                  my={1}
+                  variant="h5"
+                  fontWeight="medium"
+                  sx={{
+                    fontFamily: `"Roboto Slab", "Times New Roman", serif`,
+                  }}
+                >
+                  {blog.title}
+                </Typography>
+                <Link href={`/blog/${blog.id}`}>
+                  <Button color="primary" variant="contained">
+                    READ
+                  </Button>
+                </Link>
+              </CardBody>
+              <CardFooter>{dayjs(blog.date).format("YYYY/MM/DD")}</CardFooter>
+            </Card>
+          </GridItem>
+        ))}
+      </GridContainer>
+    </>
   )
 }
 
