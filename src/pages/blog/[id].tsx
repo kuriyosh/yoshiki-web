@@ -27,6 +27,7 @@ const BlogPost: NextPage<Props> = ({ id, title, html, image }) => {
           variant="h1"
           color="primary"
           fontWeight="medium"
+          fontSize="3rem"
           my={2}
           sx={{
             fontFamily: `"Roboto Slab", "Times New Roman", serif`,

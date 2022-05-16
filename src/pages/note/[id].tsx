@@ -18,6 +18,7 @@ const NotePost: NextPage<Props> = ({ title, html }) => {
         variant="h1"
         color="primary"
         fontWeight="medium"
+        fontSize="3rem"
         my={2}
         sx={{
           fontFamily: `"Roboto Slab", "Times New Roman", serif`,
