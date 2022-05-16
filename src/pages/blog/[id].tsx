@@ -19,7 +19,7 @@ const BlogPost: NextPage<Props> = ({ id, title, html, image }) => {
     <>
       <Meta
         title={`${title} - ${SITE_TITLE}`}
-        image={image}
+        image={`${SITE_URL}/${image}`}
         url={`${SITE_URL}/blog/${id}`}
       />
       <Box>

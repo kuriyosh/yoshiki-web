@@ -20,7 +20,11 @@ function App({ Component, pageProps }: AppProps): ReactElement {
   usePageView()
   return (
     <>
-      <Meta title={SITE_TITLE} image={Favicon.src} url={SITE_URL} />
+      <Meta
+        title={SITE_TITLE}
+        image={`${SITE_URL}/${Favicon.src}`}
+        url={SITE_URL}
+      />
       <GoogleAnalytics />
       <ThemeProvider theme={theme}>
         <CssBaseline />
