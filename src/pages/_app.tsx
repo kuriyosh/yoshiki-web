@@ -8,12 +8,20 @@ import Header from "components/Header"
 import HeaderLinks from "components/HeaderLinks"
 import Parallax from "components/Parallax"
 import Footer from "components/Footer"
+import { Meta } from "components/Meta"
+import Favicon from "../../public/favicon.png"
+import { SITE_URL, SITE_TITLE } from "../constants"
+import { GoogleAnalytics } from "components/GoogleAnalytics"
+import { usePageView } from "hooks/usePageView"
 import "prismjs/themes/prism-tomorrow.css"
 import "prismjs/plugins/line-numbers/prism-line-numbers.css"
 
 function App({ Component, pageProps }: AppProps): ReactElement {
+  usePageView()
   return (
     <>
+      <Meta title={SITE_TITLE} image={Favicon.src} url={SITE_URL} />
+      <GoogleAnalytics />
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Header
