@@ -3,7 +3,7 @@ backend:
   repo: yosyos36/yoshiki-web
   branch: main
 
-media_folder: static/assets
+media_folder: public/assets
 public_folder: /assets
 
 collections:
