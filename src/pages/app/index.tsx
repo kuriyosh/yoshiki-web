@@ -11,7 +11,6 @@ import { parserDirMarkdown } from "lib/markdownParser"
 import { appContentPath } from "lib/folderPaths"
 import { isApp } from "lib/typeChecker"
 import dayjs from "dayjs"
-import Image from "next/image"
 
 type Props = {
   apps: ({ id: string; html: string } & App)[]
@@ -38,17 +37,15 @@ const AppPage: NextPage<Props> = ({ apps }) => {
         <GridItem xs={12} sm={6} md={6} key={app.id}>
           <Card>
             {app.image != undefined && (
-              <Image
-                alt={app.title}
-                src={app.image}
-                width={600}
-                height={300}
-                objectFit="cover"
-                style={{
+              <Box
+                component="img"
+                sx={{
                   width: "100%",
                   borderTopLeftRadius: "calc(.25rem - 1px)",
                   borderTopRightRadius: "calc(.25rem - 1px)",
                 }}
+                src={app.image}
+                alt="Card-img-cap"
               />
             )}
             <CardBody>

@@ -13,7 +13,6 @@ import { blogContentPath } from "lib/folderPaths"
 import dayjs from "dayjs"
 import { Meta } from "components/Meta"
 import { SITE_TITLE, SITE_URL } from "../../constants"
-import Image from "next/image"
 
 type Props = {
   blogs: ({ id: string } & Blog)[]
@@ -42,17 +41,15 @@ const BlogPage: NextPage<Props> = ({ blogs }) => {
           <GridItem xs={12} sm={6} md={6} key={blog.id}>
             <Card>
               {blog.image != undefined && (
-                <Image
-                  style={{
+                <Box
+                  component="img"
+                  sx={{
                     width: "100%",
                     borderTopLeftRadius: "calc(.25rem - 1px)",
                     borderTopRightRadius: "calc(.25rem - 1px)",
                   }}
-                  width={600}
-                  height={300}
-                  objectFit="cover"
                   src={blog.image}
-                  alt={blog.title}
+                  alt="Card-img-cap"
                 />
               )}
               <CardBody>
