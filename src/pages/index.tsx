@@ -14,6 +14,7 @@ import GridItem from "components/GridItem"
 import TableCell from "components/TableCell"
 import profile from "../../public/images/prof.jpg"
 import { NextPage } from "next"
+import Image from "next/image"
 
 const IndexPage: NextPage = () => {
   return (
@@ -23,26 +24,24 @@ const IndexPage: NextPage = () => {
           <Box
             sx={{
               textAlign: "center",
-              "& img": {
-                maxWidth: "160px",
-                width: "100%",
-                margin: "0 auto",
-                transform: "translate3d(0, -50%, 0)",
-              },
             }}
           >
-            {/* TODO: next/image に置き換え */}
-            <Box
-              component="img"
-              src={profile.src}
-              sx={{
-                boxShadow:
-                  "0 5px 15px -8px rgba(0, 0, 0, 0.24), 0 8px 10px -5px rgba(0, 0, 0, 0.2)",
-                maxWidth: "100%",
-                height: "auto",
-                borderRadius: "50% !important",
-              }}
-            />
+            <Box sx={{ transform: "translate3d(0, -50%, 0)" }}>
+              <Image
+                alt="profile image"
+                width={160}
+                height={160}
+                src={profile}
+                style={{
+                  boxShadow:
+                    "0 5px 15px -8px rgba(0, 0, 0, 0.24), 0 8px 10px -5px rgba(0, 0, 0, 0.2)",
+                  margin: "0 auto",
+                  height: "auto",
+                  overflow: "initial",
+                  borderRadius: "50%",
+                }}
+              />
+            </Box>
             <Box mt="-80px">
               <Typography
                 variant="h3"

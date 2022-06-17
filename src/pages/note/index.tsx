@@ -13,6 +13,7 @@ import dayjs from "dayjs"
 import { notesContentPath } from "lib/folderPaths"
 import { Meta } from "components/Meta"
 import { SITE_TITLE, SITE_URL } from "../../constants"
+import Image from "next/image"
 
 type Props = {
   notes: ({ id: string } & Note)[]
@@ -44,15 +45,17 @@ const NotePage: NextPage<Props> = ({ notes }) => {
           <GridItem xs={12} sm={6} md={6} key={note.id}>
             <Card>
               {note.image != undefined && (
-                <Box
-                  component="img"
-                  sx={{
+                <Image
+                  src={note.image}
+                  alt={note.title}
+                  width={600}
+                  height={300}
+                  objectFit="cover"
+                  style={{
                     width: "100%",
                     borderTopLeftRadius: "calc(.25rem - 1px)",
                     borderTopRightRadius: "calc(.25rem - 1px)",
                   }}
-                  src={note.image}
-                  alt="Card-img-cap"
                 />
               )}
               <CardBody>
